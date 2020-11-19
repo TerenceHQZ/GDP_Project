@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        Lose();
+    }
+
     public static void SetMoney(int amount)
     {
         playerMoney += amount;
@@ -46,5 +51,16 @@ public class GameManager : MonoBehaviour
     public static int GetPlayerHappiness()
     {
         return playerHappiness;
+    }
+
+    void Lose()
+    {
+        // get playermoney and happiness variable from other script 
+
+        if(playerMoney <= 0 && playerHappiness <= 0)
+        {
+            // show lose screen
+            // end the game
+        }
     }
 }
