@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 31b71880d5b08fa4497f6f2fe2f4f2cd
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Tricky Jimmy
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 985f37f7eeb940349b5313429011b124, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
