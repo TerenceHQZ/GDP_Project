@@ -4,14 +4,17 @@ public class JobManager : MonoBehaviour
 {
     public Material OutlineMaterial;
     public GameObject[] buildings;
+    public GameObject character;
 
     public Renderer[] bRenderer;
     public Material[] originalMaterial;
 
+    public static int playerJob;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        Invoke("RandomJob", 7.5f);
     }
 
     // Update is called once per frame
@@ -31,9 +34,28 @@ public class JobManager : MonoBehaviour
             {
                 if (hit.transform.tag == "Buildings")
                 {
-                    GameObject hitGameObject = hit.collider.gameObject;
+                    Vector3 buildingPos = hit.transform.position;
+                    Vector3 characterPos = character.transform.position;
 
-                    hitGameObject.GetComponent<Renderer>().material = originalMaterial[0];
+                    if ((buildingPos - characterPos).magnitude <= 1.25f)
+                    {
+                        if(playerJob == 0)
+                        {
+                            GameObject hitGameObject = hit.collider.gameObject;
+
+                            hitGameObject.GetComponent<Renderer>().material = originalMaterial[0];
+
+                            playerJob = Random.Range(0, 4);
+
+                            Debug.Log("You accepted an part-time office job!");
+
+                            GameManager.SetMoney(100);
+                        }
+                        else
+                        {
+                            Debug.Log("You already have a job!");
+                        }
+                    }
                 }
             }
         }
@@ -41,6 +63,7 @@ public class JobManager : MonoBehaviour
 
     void RandomJob()
     {
-        bRenderer[Random.Range(0, 2)].material = OutlineMaterial;
+        int randomValue = Random.Range(0, 2);
+        bRenderer[randomValue].material = OutlineMaterial;
     }
 }
