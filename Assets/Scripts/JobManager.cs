@@ -11,6 +11,8 @@ public class JobManager : MonoBehaviour
 
     public static int playerJob;
 
+    float Timer = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,8 @@ public class JobManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Timer += Time.deltaTime;
+
         if (Input.GetKeyDown(KeyCode.J))
         {
             RandomJob();
@@ -37,7 +41,7 @@ public class JobManager : MonoBehaviour
                     Vector3 buildingPos = hit.transform.position;
                     Vector3 characterPos = character.transform.position;
 
-                    if ((buildingPos - characterPos).magnitude <= 1.25f)
+                    if ((buildingPos - characterPos).magnitude <= 1.5f)
                     {
                         if(playerJob == 0)
                         {
@@ -48,8 +52,7 @@ public class JobManager : MonoBehaviour
                             playerJob = Random.Range(0, 4);
 
                             Debug.Log("You accepted an part-time office job!");
-
-                            GameManager.SetMoney(100);
+                            Invoke("jobComplete", 5f);
                         }
                         else
                         {
@@ -65,5 +68,11 @@ public class JobManager : MonoBehaviour
     {
         int randomValue = Random.Range(0, 2);
         bRenderer[randomValue].material = OutlineMaterial;
+    }
+    void jobComplete()
+    {
+        Debug.Log("You have completed a job! You have earned $100!");
+        GameManager.SetMoney(100);
+        GameManager.SetHappiness(-20);
     }
 }
