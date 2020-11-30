@@ -465,6 +465,10 @@ PrefabInstance:
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 2326241795677668570, guid: 99d5233d36e45c04cb4faed82a3df32b, type: 3}
+      propertyPath: m_fontColorGradientPreset
+      value: 
+      objectReference: {fileID: 11400000, guid: 60586f59aa8d3d94e8dbe9e207b64e62, type: 2}
     - target: {fileID: 2693207008960965330, guid: 99d5233d36e45c04cb4faed82a3df32b, type: 3}
       propertyPath: m_IsActive
       value: 0
