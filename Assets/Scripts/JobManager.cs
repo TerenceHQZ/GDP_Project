@@ -40,6 +40,7 @@ public class JobManager : MonoBehaviour
                     if ((buildingPos - characterPos).magnitude <= 1.5f)
                     {
                         if(GetJob() == 0)
+                        if (playerJob == 0)
                         {
                             GameObject hitGameObject = hit.collider.gameObject;
 
@@ -70,8 +71,8 @@ public class JobManager : MonoBehaviour
     {
         bRenderer[0].material = OutlineMaterial;
     }
-
-    void JobComplete()
+    
+    void jobComplete()
     {
         Debug.Log("You have completed a job! You have earned $100!");
         GameManager.SetMoney(100);
