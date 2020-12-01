@@ -11,8 +11,6 @@ public class JobManager : MonoBehaviour
 
     public static int playerJob;
 
-    float Timer = 0f;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +20,6 @@ public class JobManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Timer += Time.deltaTime;
-
         if (Input.GetKeyDown(KeyCode.J))
         {
             JobAvailable();
@@ -43,20 +39,21 @@ public class JobManager : MonoBehaviour
 
                     if ((buildingPos - characterPos).magnitude <= 1.5f)
                     {
-                        if(playerJob == 0)
+                        if(GetJob() == 0)
                         {
                             GameObject hitGameObject = hit.collider.gameObject;
 
                             hitGameObject.GetComponent<Renderer>().material = originalMaterial[0];
 
                             playerJob = Random.Range(1, 5);
-                            playerJob = 1;
-                            PlayerPrefs.SetInt("PlayerJob", playerJob);
+                            SetJob(1);
+
+                            GameManager.SetHappiness(-15);
 
                             WarehouseJob.WarehouseTaskReady = true;
 
                             Debug.Log("You accepted a warehouse job!");
-                            //Invoke("jobComplete", 5f);
+                            //Invoke("JobComplete", 5f);
                             //Tasks.jobTaskComplete(); 
                         }
                         else
@@ -74,7 +71,7 @@ public class JobManager : MonoBehaviour
         bRenderer[0].material = OutlineMaterial;
     }
 
-    void jobComplete()
+    void JobComplete()
     {
         Debug.Log("You have completed a job! You have earned $100!");
         GameManager.SetMoney(100);

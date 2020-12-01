@@ -5,18 +5,6 @@ public class WarehouseJob : MonoBehaviour
     public float taskCoolDown = 30f;
     public static bool WarehouseTaskReady;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnCollisionEnter(Collision collision)
     {
         if(JobManager.playerJob == 1)
@@ -24,6 +12,7 @@ public class WarehouseJob : MonoBehaviour
             if (WarehouseTaskReady)
             {
                 Debug.Log("Task completed");
+                GameManager.SetMoney(100);
                 WarehouseTaskReady = false;
                 Invoke("ResetCooldown", taskCoolDown);
             }
