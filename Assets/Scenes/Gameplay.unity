@@ -495,8 +495,9 @@ GameObject:
   - component: {fileID: 404755058}
   - component: {fileID: 404755057}
   - component: {fileID: 404755056}
+  - component: {fileID: 404755060}
   m_Layer: 0
-  m_Name: Building2
+  m_Name: Warehouse
   m_TagString: Buildings
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -578,6 +579,19 @@ Transform:
   m_Father: {fileID: 1091202606}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &404755060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404755055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221c30d033069a74584e2e3716ad3620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  taskCoolDown: 30
 --- !u!1 &472946856 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3380814292968854082, guid: e6c7abc55ae090c4698251bcce1e3625, type: 3}
@@ -1945,7 +1959,7 @@ GameObject:
   - component: {fileID: 2112658633}
   - component: {fileID: 2112658632}
   m_Layer: 0
-  m_Name: Building1
+  m_Name: JobSelection
   m_TagString: Buildings
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
