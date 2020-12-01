@@ -9,6 +9,13 @@ public class Tasks : MonoBehaviour
     private float time = 0.0f;
     public float interpolationPeriod = 0.1f;
     public float dailyMoneySpent = 0f;
+    int jobsCompleted = 0;
+    public static Tasks Instance;
+
+    void Awake()
+    {
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -28,15 +35,30 @@ public class Tasks : MonoBehaviour
             if(dailyMoneySpent <= 20f)
             {
                 //savingComplete();
+                Debug.Log("You have saved less than $20 today.");
             }
             else
             {
-
+                Debug.Log("You have spent more than $20 in a day. Try to budget out your spenditure in a day.");
             }
             
             dailyMoneySpent = 0f; //reset the daily money spent every day
         }
     }
+
+     void jobTaskComplete()
+    {
+        if (jobsCompleted == 3)
+        {
+            Debug.Log("Great Job on completing 3 jobs. Continue to earn more money!");
+        }
+        else
+        {
+            Debug.Log("Completed" + jobsCompleted + "jobs");
+        }
+        
+    }
+
     void moneySpent()
     {
         dailyMoneySpent = 0f;
@@ -48,21 +70,4 @@ public class Tasks : MonoBehaviour
         int x = price;
         dailyMoneySpent += price;
     }
-    /*void taskHappiness ()
-    {
-        if (taskDone)
-        {
-            taskHappiness += 15;
-        }
-    }*/
-
-    
-
-    /*void spendLess()
-    {
-        if (dailySpend < 20)
-        {
-            taskHappiness += 15;
-        }
-    }*/
 }

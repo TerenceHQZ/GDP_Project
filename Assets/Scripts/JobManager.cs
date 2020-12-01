@@ -57,6 +57,7 @@ public class JobManager : MonoBehaviour
 
                             Debug.Log("You accepted a warehouse job!");
                             //Invoke("jobComplete", 5f);
+                            //Tasks.jobTaskComplete(); 
                         }
                         else
                         {
@@ -78,6 +79,7 @@ public class JobManager : MonoBehaviour
         Debug.Log("You have completed a job! You have earned $100!");
         GameManager.SetMoney(100);
         GameManager.SetHappiness(-20);
+        //Tasks.jobsCompleted += 1;
     }
 
     public static void SetJob(int amount)
