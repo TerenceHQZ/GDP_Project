@@ -236,7 +236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7477378028039886972, guid: ff0c50ae462d5a640833f40545d1d4d3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8193966883691326086, guid: ff0c50ae462d5a640833f40545d1d4d3, type: 3}
       propertyPath: m_IsActive
@@ -296,6 +296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8349537f6ce512844ba148cd5e9cbf0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingMoney: 1000
+  startingHappiness: 70
   moneyText: {fileID: 0}
   happinessText: {fileID: 0}
 --- !u!1001 &658784454
