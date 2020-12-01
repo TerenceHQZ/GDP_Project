@@ -3,8 +3,8 @@
 public class CameraControl : MonoBehaviour
 {
 
-    [SerializeField] private Camera cam;
-    [SerializeField] private Vector3 camTranslate;
+    public Camera cam;
+    public Vector3 camTranslate;
 
     private Vector3 previousPosition;
     private Vector3 direction;
