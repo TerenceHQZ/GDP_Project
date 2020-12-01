@@ -46,12 +46,11 @@ public class FoodAndBeveragesJob : MonoBehaviour
 
     void foodNBeverageJob()
     {
-        if (tasksCount >= tasks)
+        if (tasksCount >= tasks) // completed the job
         {
             foodBeverageJob = false;
             bRenderer.material = OriginalMaterial;
             tasksCount = 0;
-            // completed the job
         }
 
         if (Input.GetMouseButtonDown(0))
