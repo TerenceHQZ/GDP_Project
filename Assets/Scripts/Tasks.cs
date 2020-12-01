@@ -20,7 +20,7 @@ public class Tasks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
     // Update is called once per frame
     void Update()
@@ -32,7 +32,7 @@ public class Tasks : MonoBehaviour
         {
             time = 0.0f;
 
-            if (dailyMoneySpent <= 20f)
+            if(dailyMoneySpent <= 20f)
             {
                 //savingComplete();
                 Debug.Log("You have saved less than $20 today.");
@@ -41,7 +41,7 @@ public class Tasks : MonoBehaviour
             {
                 Debug.Log("You have spent more than $20 in a day. Try to budget out your spenditure in a day.");
             }
-
+            
             dailyMoneySpent = 0f; //reset the daily money spent every day
         }
     }
@@ -56,7 +56,6 @@ public class Tasks : MonoBehaviour
         {
             Debug.Log("Completed" + jobsCompleted + "jobs");
         }
-        
     }
 
     void moneySpent()
@@ -64,28 +63,10 @@ public class Tasks : MonoBehaviour
         dailyMoneySpent = 0f;
     }
 
-
+    
     void buyShop(int price)
     {
         int x = price;
         dailyMoneySpent += price;
     }
-
-    /*void taskHappiness ()
-    {
-        if (taskDone)
-        {
-            taskHappiness += 15;
-        }
-    }*/
-
-
-
-    /*void spendLess()
-    {
-        if (dailySpend < 20)
-        {
-            taskHappiness += 15;
-        }
-    }*/
 }
