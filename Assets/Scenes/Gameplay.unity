@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 29303465}
   - component: {fileID: 29303464}
   - component: {fileID: 29303463}
+  - component: {fileID: 29303466}
   m_Layer: 5
   m_Name: BuyButton (2)
   m_TagString: Untagged
@@ -270,7 +271,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 29303464}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 29303466}
+        m_TargetAssemblyTypeName: Buy, Assembly-CSharp
+        m_MethodName: buy
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 150
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &29303464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,6 +322,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 29303461}
   m_CullTransparentMesh: 0
+--- !u!114 &29303466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29303461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4e044ef6fc7674bbcd9fad8e7b6855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &53923744
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,6 +1242,7 @@ GameObject:
   - component: {fileID: 423083467}
   - component: {fileID: 423083466}
   - component: {fileID: 423083465}
+  - component: {fileID: 423083468}
   m_Layer: 5
   m_Name: BuyButton (1)
   m_TagString: Untagged
@@ -1286,7 +1312,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 423083466}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 423083468}
+        m_TargetAssemblyTypeName: Buy, Assembly-CSharp
+        m_MethodName: buy
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 30
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &423083466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1325,6 +1363,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 423083463}
   m_CullTransparentMesh: 0
+--- !u!114 &423083468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423083463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4e044ef6fc7674bbcd9fad8e7b6855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &472946856 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3380814292968854082, guid: e6c7abc55ae090c4698251bcce1e3625, type: 3}
@@ -2686,6 +2736,7 @@ GameObject:
   - component: {fileID: 1056998787}
   - component: {fileID: 1056998786}
   - component: {fileID: 1056998785}
+  - component: {fileID: 1056998788}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -2755,7 +2806,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1056998786}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1056998788}
+        m_TargetAssemblyTypeName: Buy, Assembly-CSharp
+        m_MethodName: buy
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 20
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1056998786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2794,6 +2857,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1056998783}
   m_CullTransparentMesh: 0
+--- !u!114 &1056998788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056998783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4e044ef6fc7674bbcd9fad8e7b6855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1082617341
 GameObject:
   m_ObjectHideFlags: 0
@@ -4339,6 +4414,7 @@ GameObject:
   - component: {fileID: 2052095609}
   - component: {fileID: 2052095608}
   - component: {fileID: 2052095607}
+  - component: {fileID: 2052095610}
   m_Layer: 5
   m_Name: BuyButton (3)
   m_TagString: Untagged
@@ -4408,7 +4484,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2052095608}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2052095610}
+        m_TargetAssemblyTypeName: Buy, Assembly-CSharp
+        m_MethodName: buy
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 300
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2052095608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4447,6 +4535,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052095605}
   m_CullTransparentMesh: 0
+--- !u!114 &2052095610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052095605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d4e044ef6fc7674bbcd9fad8e7b6855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2061873676
 GameObject:
   m_ObjectHideFlags: 0
