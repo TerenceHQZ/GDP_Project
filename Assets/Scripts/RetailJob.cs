@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodAndBeveragesJob : MonoBehaviour
+public class RetailJob : MonoBehaviour
 {
     public Material OutlineMaterial, CollectionMaterial, OriginalMaterial;
     Renderer bRenderer;
-    int foodBeverageTasks = 6;
-    float foodBeverageTimer = 130f;
+    float retailTimer = 120f;
+    int retailTasks = 4;
     public int tasksCount = 0;
     public bool readyForTap = false;
-    public bool foodBeverageJob = false;
+    public bool retailJob = false;
     public float timer = 0f;
+    public float retailMoney;
+    public float retailHappiness;
 
     void Start()
     {
@@ -20,12 +22,12 @@ public class FoodAndBeveragesJob : MonoBehaviour
 
     void Update()
     {
-        foodNBeverageJob();
+        RetailerJob();
     }
 
     void FixedUpdate()
     {
-        if (foodBeverageJob)
+        if (retailJob)
         {
             if (readyForTap)
             {
@@ -35,7 +37,7 @@ public class FoodAndBeveragesJob : MonoBehaviour
             {
                 bRenderer.material = OutlineMaterial;
                 timer += Time.fixedDeltaTime;
-                if (timer >= foodBeverageTimer)
+                if (timer >= retailTimer)
                 {
                     readyForTap = true;
                     timer = 0f;
@@ -44,11 +46,11 @@ public class FoodAndBeveragesJob : MonoBehaviour
         }
     }
 
-    void foodNBeverageJob()
+    void RetailerJob()
     {
-        if (tasksCount >= foodBeverageTasks) // completed the job
+        if (tasksCount >= retailTasks) // completed the job
         {
-            foodBeverageJob = false;
+            retailJob = false;
             bRenderer.material = OriginalMaterial;
             tasksCount = 0;
             JobManager.SetJob(0);
@@ -63,7 +65,7 @@ public class FoodAndBeveragesJob : MonoBehaviour
             {
                 if (hit.transform == transform) // sets playerJob int to 3, outlines the building so that the player knows that he has the job
                 {
-                    JobManager.SetJob(3);  
+                    JobManager.SetJob(4);  
                     bRenderer.material = OutlineMaterial;
                     if (readyForTap == true) 
                     {
@@ -75,3 +77,4 @@ public class FoodAndBeveragesJob : MonoBehaviour
         }
     }
 }
+
