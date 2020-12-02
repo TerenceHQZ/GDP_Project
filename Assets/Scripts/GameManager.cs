@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("AccountExist", 1);
 
-            SetMoney(-PlayerPrefs.GetInt("PlayerMoney") + startingMoney);
-            SetHappiness(-PlayerPrefs.GetInt("PlayerHappiness") + startingHappiness);
+            SetMoney(startingMoney);
+            SetHappiness(startingHappiness);
 
             JobManager.SetJob(0);
         }
@@ -37,16 +37,14 @@ public class GameManager : MonoBehaviour
         {
             SetMoney(PlayerPrefs.GetInt("PlayerMoney"));
             SetHappiness(PlayerPrefs.GetInt("PlayerHappiness"));
+
             JobManager.SetJob(PlayerPrefs.GetInt("PlayerJob"));
         }
 
         moneyText.text = "$" + playerMoney;
         happinessText.text = playerHappiness + "/100";
 
-        if (GetMoney() <= 0)
-        {
-            StartCoroutine(ReduceHappiness());
-        }
+        StartCoroutine(ReduceHappiness());
     }
 
     void Update()
@@ -58,8 +56,8 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("AccountExist", 1);
 
-            SetMoney(-PlayerPrefs.GetInt("PlayerMoney") + startingMoney);
-            SetHappiness(-PlayerPrefs.GetInt("PlayerHappiness") + startingHappiness);
+            SetMoney(startingMoney);
+            SetHappiness(startingHappiness);
 
             JobManager.SetJob(0);
         }
@@ -67,11 +65,11 @@ public class GameManager : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             if(GetMoney() > 0)
-                SetMoney(-1);
+                SetMoney(GetMoney() - 1);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            SetMoney(1);
+            SetMoney(GetMoney() + 1);
         }
     }
 
@@ -84,7 +82,7 @@ public class GameManager : MonoBehaviour
             yield return StartCoroutine(ReduceHappiness());
         }
 
-        SetHappiness(-1);
+        SetHappiness(GetHappiness() - 1);
 
         if (GetHappiness() <= 0)
         {
@@ -100,7 +98,7 @@ public class GameManager : MonoBehaviour
 
     public static void SetMoney(int amount)
     {
-        playerMoney += amount;
+        playerMoney = amount;
         PlayerPrefs.SetInt("PlayerMoney", playerMoney);
 
         Instance.moneyText.text = "$" + playerMoney;
@@ -115,7 +113,7 @@ public class GameManager : MonoBehaviour
 
     public static void SetHappiness(int amount)
     {
-        playerHappiness += amount;
+        playerHappiness = amount;
         PlayerPrefs.SetInt("PlayerHappiness", playerHappiness);
 
         Instance.moneyText.text = "$" + playerMoney;
