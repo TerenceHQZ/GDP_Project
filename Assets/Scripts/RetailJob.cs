@@ -7,11 +7,11 @@ public class RetailJob : MonoBehaviour
     public Material OutlineMaterial, CollectionMaterial, OriginalMaterial;
     Renderer bRenderer;
     float retailTimer = 120f;
+    float timer = 0f;
     int retailTasks = 4;
-    public int tasksCount = 0;
-    public bool readyForTap = false;
+    int tasksCount = 0;
+    bool readyForTap = false;
     public bool retailJob = false;
-    public float timer = 0f;
     public float retailMoney;
     public float retailHappiness;
 

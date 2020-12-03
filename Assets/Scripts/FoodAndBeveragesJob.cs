@@ -8,10 +8,12 @@ public class FoodAndBeveragesJob : MonoBehaviour
     Renderer bRenderer;
     int foodBeverageTasks = 6;
     float foodBeverageTimer = 130f;
-    public int tasksCount = 0;
-    public bool readyForTap = false;
+    float timer = 0f;
+    int tasksCount = 0;
+    bool readyForTap = false;
     public bool foodBeverageJob = false;
-    public float timer = 0f;
+    public float fBMoney;
+    public float fBHappiness;
 
     void Start()
     {
