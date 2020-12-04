@@ -7,50 +7,30 @@ public class FoodAndBeveragesJob : MonoBehaviour
     public Material OutlineMaterial, CollectionMaterial, OriginalMaterial;
     Renderer bRenderer;
     int foodBeverageTasks = 6;
-    float foodBeverageTimer = 130f;
-    float timer = 0f;
     int tasksCount = 0;
     bool readyForTap = false;
-    public bool foodBeverageJob = false;
+    public bool foodBeverageJobActive = false;
     public float fBMoney;
     public float fBHappiness;
 
     void Start()
     {
         bRenderer = GetComponent<MeshRenderer>();
+
+        StartCoroutine(FoodBeverageTasks());
+        StartCoroutine(UpdateMaterial());
     }
 
     void Update()
     {
-        foodNBeverageJob();
+        FoodBeverageJob();
     }
 
-    void FixedUpdate()
-    {
-        if (foodBeverageJob)
-        {
-            if (readyForTap)
-            {
-                bRenderer.material = CollectionMaterial;
-            }
-            else
-            {
-                bRenderer.material = OutlineMaterial;
-                timer += Time.fixedDeltaTime;
-                if (timer >= foodBeverageTimer)
-                {
-                    readyForTap = true;
-                    timer = 0f;
-                }
-            }
-        }
-    }
-
-    void foodNBeverageJob()
+    void FoodBeverageJob()
     {
         if (tasksCount >= foodBeverageTasks) // completed the job
         {
-            foodBeverageJob = false;
+            foodBeverageJobActive = false;
             bRenderer.material = OriginalMaterial;
             tasksCount = 0;
             JobManager.SetJob(0);
@@ -65,15 +45,45 @@ public class FoodAndBeveragesJob : MonoBehaviour
             {
                 if (hit.transform == transform) // sets playerJob int to 3, outlines the building so that the player knows that he has the job
                 {
-                    JobManager.SetJob(3);  
+                    JobManager.SetJob(3);
                     bRenderer.material = OutlineMaterial;
-                    if (readyForTap == true) 
+                    if (readyForTap == true)
                     {
                         readyForTap = false;
                         tasksCount++;
                     }
                 }
             }
+        }
+    }
+
+    IEnumerator FoodBeverageTasks()
+    {
+        yield return new WaitForSeconds(120f);
+
+        if (foodBeverageJobActive)
+        {
+            readyForTap = true;
+            StartCoroutine(FoodBeverageTasks());
+        }
+    }
+
+    IEnumerator UpdateMaterial()
+    {
+        yield return new WaitForSeconds(1f);
+
+        if (foodBeverageJobActive)
+        {
+            if (readyForTap)
+            {
+                bRenderer.material = CollectionMaterial;
+            }
+
+            else
+            {
+                bRenderer.material = OutlineMaterial;
+            }
+            StartCoroutine(UpdateMaterial());
         }
     }
 }
