@@ -27,7 +27,7 @@ public class WarehouseJob : MonoBehaviour
     private void Update()
     {
 
-        Debug.Log(JobManager.GetJob());
+        // Debug.Log(JobManager.GetJob());
 
         if (Input.GetMouseButtonDown(0) && JobManager.GetJob() == 1 && WarehouseTaskReady)
         {

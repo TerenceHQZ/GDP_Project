@@ -1,89 +1,117 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FoodAndBeveragesJob : MonoBehaviour
 {
-    public Material OutlineMaterial, CollectionMaterial, OriginalMaterial;
-    Renderer bRenderer;
-    int foodBeverageTasks = 6;
-    int tasksCount = 0;
-    bool readyForTap = false;
-    public bool foodBeverageJobActive = false;
-    public float fBMoney;
-    public float fBHappiness;
+    public float taskCoolDown = 192f;
+    public static bool FoodBeverageTaskReady;
+    private float timer;
 
-    void Start()
+    public GameObject character;
+
+    private void Start()
     {
-        bRenderer = GetComponent<MeshRenderer>();
+        timer = PlayerPrefs.GetFloat("TaskCooldown", 0f);
 
-        StartCoroutine(FoodBeverageTasks());
-        StartCoroutine(UpdateMaterial());
-    }
-
-    void Update()
-    {
-        FoodBeverageJob();
-    }
-
-    void FoodBeverageJob()
-    {
-        if (tasksCount >= foodBeverageTasks) // completed the job
+        if(timer > 0f)
         {
-            foodBeverageJobActive = false;
-            bRenderer.material = OriginalMaterial;
-            tasksCount = 0;
-            JobManager.SetJob(0);
+            Invoke("ResetCooldown", timer);
+        }
+        else
+        {
+            FoodBeverageTaskReady = true;
         }
 
-        if (Input.GetMouseButtonDown(0))  // checks whether the player clicks on the F&B building 
+        JobManager.SetJob(3);
+    }
+
+    private void Update()
+    {
+
+        Debug.Log(JobManager.GetJob());
+
+        if (Input.GetMouseButtonDown(0) && JobManager.GetJob() == 3 && FoodBeverageTaskReady)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform == transform) // sets playerJob int to 3, outlines the building so that the player knows that he has the job
+                if (hit.transform.name == "WcDonalds")
                 {
-                    JobManager.SetJob(3);
-                    bRenderer.material = OutlineMaterial;
-                    if (readyForTap == true)
+                    Vector3 buildingPos = hit.transform.position;
+                    Vector3 characterPos = character.transform.position;
+
+                    Debug.Log((buildingPos - characterPos).magnitude);
+
+                    if ((buildingPos - characterPos).magnitude <= 2.25f)
                     {
-                        readyForTap = false;
-                        tasksCount++;
+                        //GameObject hitGameObject = hit.collider.gameObject;
+
+                        GameManager.SetHappiness(GameManager.GetHappiness() - JobManager.happinessLossPerTask);
+
+                        JobManager.SetTaskDone(JobManager.GetTaskDone() + 1);
+
+                        // HIDE PROMPTS UI ON THE WAREHOUSE BUILDING
+
+                        Invoke("ResetCooldown", taskCoolDown);
+
+                        FoodBeverageTaskReady = false;
+
+                        timer = taskCoolDown;
                     }
                 }
             }
         }
-    }
 
-    IEnumerator FoodBeverageTasks()
-    {
-        yield return new WaitForSeconds(120f);
-
-        if (foodBeverageJobActive)
+        if (!FoodBeverageTaskReady && timer >= 0f)
         {
-            readyForTap = true;
-            StartCoroutine(FoodBeverageTasks());
+            timer -= Time.deltaTime;
+        }
+
+        if (!FoodBeverageTaskReady && timer <= 0.5f)
+        {
+            timer = 0f;
+            PlayerPrefs.SetFloat("TaskCooldown", 0f);
         }
     }
 
-    IEnumerator UpdateMaterial()
+    private void ResetCooldown()
     {
-        yield return new WaitForSeconds(1f);
+        FoodBeverageTaskReady = true;
 
-        if (foodBeverageJobActive)
+        timer = 0f;
+        PlayerPrefs.SetFloat("TaskCooldown", 0f);
+
+        Debug.Log("Warehouse: Cooldown over");
+
+        if (JobManager.GetJob() == 3)
         {
-            if (readyForTap)
-            {
-                bRenderer.material = CollectionMaterial;
-            }
+            // SHOW PROMPTS UI ON THE WAREHOUSE BUILDING
+        }
+    }
 
+    /*
+    void OnCollisionEnter(Collision collision)
+    {
+        if(JobManager.playerJob == 1)
+        {
+            if (WarehouseTaskReady)
+            {
+                Debug.Log("Task completed");
+                GameManager.SetMoney(100);
+                WarehouseTaskReady = false;
+                Invoke("ResetCooldown", taskCoolDown);
+            }
             else
             {
-                bRenderer.material = OutlineMaterial;
+                Debug.Log("There is no task yet!");
             }
-            StartCoroutine(UpdateMaterial());
+        }
+        else
+        {
+            Debug.Log("You do not have the warehouse job!");
         }
     }
+    */
 }
+
