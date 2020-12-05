@@ -12,6 +12,8 @@ public class DayTimeManager : MonoBehaviour
     public int startingHour = 7;
     public int startingMinute = 0;
 
+    public static int taskBaseMoney = 25;
+
     public TextMeshProUGUI dayTimeText;
 
     public static DayTimeManager Instance;
@@ -91,6 +93,9 @@ public class DayTimeManager : MonoBehaviour
         {
             SetHour(7);
             SetDay(GetDay() + 1);
+
+            GameManager.SetMoney(GameManager.GetMoney() + (JobManager.tasksDone * taskBaseMoney));
+            GameManager.SetHappiness(GameManager.GetHappiness() + JobManager.happinessLossBase);
         }
         PlayerPrefs.SetInt("Hours", hours);
         Instance.dayTimeText.text = "Day: " + GetDay() + " | " + GetHour().ToString("D2") + ":" + GetMinute().ToString("D2");
