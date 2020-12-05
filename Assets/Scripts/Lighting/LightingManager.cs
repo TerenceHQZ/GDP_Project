@@ -12,7 +12,7 @@ public class LightingManager : MonoBehaviour
 
     private float UpdateAmount = 0.00166667f;
 
-    private void Start()
+    private void Awake()
     {
         TimeOfDay = PlayerPrefs.GetFloat("LightingTime", 7f);
 
@@ -41,7 +41,7 @@ public class LightingManager : MonoBehaviour
                 TimeOfDay = 7f;
             }
 
-            TimeOfDay %= 24; //Modulus to ensure always between 0-24
+            TimeOfDay %= 24;
 
             UpdateLighting(TimeOfDay / 24);
         }
@@ -55,7 +55,6 @@ public class LightingManager : MonoBehaviour
 
     private void UpdateLighting(float timePercent)
     {
-        //If the directional light is set then rotate and set it's color, I actually rarely use the rotation because it casts tall shadows unless you clamp the value
         if (DirectionalLight != null)
         {
             DirectionalLight.color = Preset.DirectionalColor.Evaluate(timePercent);
@@ -65,18 +64,16 @@ public class LightingManager : MonoBehaviour
 
     }
 
-    //Try to find a directional light to use if we haven't set one
     private void OnValidate()
     {
         if (DirectionalLight != null)
             return;
 
-        //Search for lighting tab sun
+
         if (RenderSettings.sun != null)
         {
             DirectionalLight = RenderSettings.sun;
         }
-        //Search scene for light that fits criteria (directional)
         else
         {
             Light[] lights = GameObject.FindObjectsOfType<Light>();
