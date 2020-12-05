@@ -8,7 +8,7 @@ public class LightingManager : MonoBehaviour
     [SerializeField] private Light DirectionalLight;
     [SerializeField] private LightingPreset Preset;
     //Variables
-    [SerializeField, Range(7, 23)] private float TimeOfDay;
+    [SerializeField, Range(7, 23)] public float TimeOfDay;
 
     private float UpdateAmount = 0.00166667f;
 
@@ -52,6 +52,18 @@ public class LightingManager : MonoBehaviour
 
         yield return StartCoroutine(ChangeLighting());
     }
+
+    /*public void ChangeLightingTime(float targetTime) (ryan's code)
+    {
+        TimeOfDay = targetTime;
+        UpdateLighting(TimeOfDay / 24);
+    }
+
+    public static float GetTimeOfDay()
+    {
+        // return TimeOfDay;
+    }
+    */ 
 
     private void UpdateLighting(float timePercent)
     {

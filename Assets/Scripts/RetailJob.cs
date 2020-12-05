@@ -1,89 +1,117 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RetailJob : MonoBehaviour
 {
-    public Material OutlineMaterial, CollectionMaterial, OriginalMaterial;
-    Renderer bRenderer;
-    int retailTasks = 4;
-    int tasksCount = 0;
-    bool readyForTap = false;
-    public bool retailJobActive = false;
-    public float retailMoney;
-    public float retailHappiness;
+    public float taskCoolDown = 192f;
+    public static bool retailJobTaskReady;
+    private float timer;
 
-    void Start()
-    {
-        bRenderer = GetComponent<MeshRenderer>();
-        StartCoroutine(RetailTasks());
-        StartCoroutine(UpdateMaterial());
-    }
+    public GameObject character;
 
-    void Update()
+    private void Start()
     {
-        RetailerJob();
-    }
+        timer = PlayerPrefs.GetFloat("TaskCooldown", 0f);
 
-    void RetailerJob()
-    {
-        if (tasksCount >= retailTasks) // completed the job
+        if(timer > 0f)
         {
-            retailJobActive = false;
-            bRenderer.material = OriginalMaterial;
-            tasksCount = 0;
-            JobManager.SetJob(0);
+            Invoke("ResetCooldown", timer);
+        }
+        else
+        {
+            retailJobTaskReady = true;
         }
 
-        if (Input.GetMouseButtonDown(0))  // checks whether the player clicks on the F&B building 
+        JobManager.SetJob(3);
+    }
+
+    private void Update()
+    {
+
+        Debug.Log(JobManager.GetJob());
+
+        if (Input.GetMouseButtonDown(0) && JobManager.GetJob() == 4 && retailJobTaskReady)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform == transform) // sets playerJob int to 3, outlines the building so that the player knows that he has the job
+                if (hit.transform.name == "Retail")
                 {
-                    JobManager.SetJob(4);  
-                    bRenderer.material = OutlineMaterial;
-                    if (readyForTap == true) 
+                    Vector3 buildingPos = hit.transform.position;
+                    Vector3 characterPos = character.transform.position;
+
+                    Debug.Log((buildingPos - characterPos).magnitude);
+
+                    if ((buildingPos - characterPos).magnitude <= 2.25f)
                     {
-                        readyForTap = false;
-                        tasksCount++;
+                        //GameObject hitGameObject = hit.collider.gameObject;
+
+                        GameManager.SetHappiness(GameManager.GetHappiness() - JobManager.happinessLossPerTask);
+
+                        JobManager.SetTaskDone(JobManager.GetTaskDone() + 1);
+
+                        // HIDE PROMPTS UI ON THE WAREHOUSE BUILDING
+
+                        Invoke("ResetCooldown", taskCoolDown);
+
+                        retailJobTaskReady = false;
+
+                        timer = taskCoolDown;
                     }
                 }
             }
         }
-    }
 
-    IEnumerator RetailTasks()
-    {
-        yield return new WaitForSeconds(100f);
-        
-        if (retailJobActive)
+        if (!retailJobTaskReady && timer >= 0f)
         {
-            readyForTap = true;
-            StartCoroutine(RetailTasks());
+            timer -= Time.deltaTime;
+        }
+
+        if (!retailJobTaskReady && timer <= 0.5f)
+        {
+            timer = 0f;
+            PlayerPrefs.SetFloat("TaskCooldown", 0f);
         }
     }
 
-    IEnumerator UpdateMaterial()
+    private void ResetCooldown()
     {
-        yield return new WaitForSeconds(1f);
+        retailJobTaskReady = true;
 
-        if(retailJobActive)
+        timer = 0f;
+        PlayerPrefs.SetFloat("TaskCooldown", 0f);
+
+        Debug.Log("Warehouse: Cooldown over");
+
+        if (JobManager.GetJob() == 4)
         {
-            if (readyForTap)
+            // SHOW PROMPTS UI ON THE WAREHOUSE BUILDING
+        }
+    }
+
+    /*
+    void OnCollisionEnter(Collision collision)
+    {
+        if(JobManager.playerJob == 1)
+        {
+            if (WarehouseTaskReady)
             {
-                bRenderer.material = CollectionMaterial;
+                Debug.Log("Task completed");
+                GameManager.SetMoney(100);
+                WarehouseTaskReady = false;
+                Invoke("ResetCooldown", taskCoolDown);
             }
-            
             else
             {
-                bRenderer.material = OutlineMaterial;
+                Debug.Log("There is no task yet!");
             }
-            StartCoroutine(UpdateMaterial());
+        }
+        else
+        {
+            Debug.Log("You do not have the warehouse job!");
         }
     }
+    */
 }
 
