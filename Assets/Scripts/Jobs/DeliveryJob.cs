@@ -29,7 +29,7 @@ public class DeliveryJob : MonoBehaviour
             DeliveryTaskReady = true;
         }
 
-        JobManager.SetJob(2);
+        //JobManager.SetJob(2);
     }
 
     private void Update()
