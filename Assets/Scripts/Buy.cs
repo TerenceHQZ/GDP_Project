@@ -9,4 +9,8 @@ public class Buy : MonoBehaviour
     {
         GameManager.SetMoney(GameManager.GetMoney() -price);
     }
+    public void happiness(int amount)
+    {
+        GameManager.SetHappiness(GameManager.GetHappiness() + amount);
+    }
 }
