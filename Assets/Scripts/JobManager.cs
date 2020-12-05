@@ -11,7 +11,6 @@ public class JobManager : MonoBehaviour
 
     public static int playerJob;
 
-    public static int happinessLossBase = 10;
     public static int happinessLossPerTask = 2;
 
     public static int tasksDone;
@@ -20,8 +19,6 @@ public class JobManager : MonoBehaviour
     void Start()
     {
         //Invoke("RandomJob", 7.5f);
-
-        playerJob = PlayerPrefs.GetInt("PlayerJob", 0);
     }
 
     // Update is called once per frame
@@ -90,16 +87,5 @@ public class JobManager : MonoBehaviour
     public static int GetJob()
     {
         return playerJob;
-    }
-
-    public static void SetTaskDone(int amount)
-    {
-        tasksDone = amount;
-        PlayerPrefs.SetInt("TasksDone", amount);
-    }
-
-    public static int GetTaskDone()
-    {
-        return tasksDone;
     }
 }

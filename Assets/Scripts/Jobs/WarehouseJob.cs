@@ -3,6 +3,7 @@
 public class WarehouseJob : MonoBehaviour
 {
     public float taskCoolDown = 192f;
+    public int taskMoney = 25;
     public static bool WarehouseTaskReady;
     private float timer;
 
@@ -12,24 +13,15 @@ public class WarehouseJob : MonoBehaviour
     {
         timer = PlayerPrefs.GetFloat("TaskCooldown", 0f);
 
-        if(timer > 0f)
+        if(timer >= 0f)
         {
-            Invoke("ResetCooldown", timer);
+            Invoke("ResetCooldown", 0f);
         }
-        else
-        {
-            WarehouseTaskReady = true;
-        }
-
-        //JobManager.SetJob(1);
     }
 
     private void Update()
     {
-
-        Debug.Log(JobManager.GetJob());
-
-        if (Input.GetMouseButtonDown(0) && JobManager.GetJob() == 1 && WarehouseTaskReady)
+        if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -41,53 +33,29 @@ public class WarehouseJob : MonoBehaviour
                     Vector3 buildingPos = hit.transform.position;
                     Vector3 characterPos = character.transform.position;
 
-                    Debug.Log((buildingPos - characterPos).magnitude);
-
-                    if ((buildingPos - characterPos).magnitude <= 2.25f)
+                    if ((buildingPos - characterPos).magnitude <= 1.5f)
                     {
-                        //GameObject hitGameObject = hit.collider.gameObject;
+                        if (JobManager.GetJob() == 1 && WarehouseTaskReady)
+                        {
+                            GameObject hitGameObject = hit.collider.gameObject;
 
-                        GameManager.SetHappiness(GameManager.GetHappiness() - JobManager.happinessLossPerTask);
+                            GameManager.SetHappiness(GameManager.GetHappiness() - JobManager.happinessLossPerTask);
 
-                        JobManager.SetTaskDone(JobManager.GetTaskDone() + 1);
+                            JobManager.tasksDone++;
 
-                        // HIDE PROMPTS UI ON THE WAREHOUSE BUILDING
+                            Invoke("ResetCooldown", taskCoolDown);
 
-                        Invoke("ResetCooldown", taskCoolDown);
-
-                        WarehouseTaskReady = false;
-
-                        timer = taskCoolDown;
+                            WarehouseTaskReady = false;
+                        }
                     }
                 }
             }
-        }
-
-        if (!WarehouseTaskReady && timer >= 0f)
-        {
-            timer -= Time.deltaTime;
-        }
-
-        if (!WarehouseTaskReady && timer <= 0.5f)
-        {
-            timer = 0f;
-            PlayerPrefs.SetFloat("TaskCooldown", 0f);
         }
     }
 
     private void ResetCooldown()
     {
         WarehouseTaskReady = true;
-
-        timer = 0f;
-        PlayerPrefs.SetFloat("TaskCooldown", 0f);
-
-        Debug.Log("Warehouse: Cooldown over");
-
-        if (JobManager.GetJob() == 1)
-        {
-            // SHOW PROMPTS UI ON THE WAREHOUSE BUILDING
-        }
     }
 
     /*

@@ -5,8 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Buildings
-  - Warehouse
-  - DeliveryBuildings
   layers:
   - Default
   - TransparentFX
