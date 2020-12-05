@@ -114,6 +114,12 @@ public class GameManager : MonoBehaviour
     public static void SetHappiness(int amount)
     {
         playerHappiness = amount;
+
+        if (playerHappiness > 100)
+        {
+            playerHappiness = 100;
+        }
+
         PlayerPrefs.SetInt("PlayerHappiness", playerHappiness);
 
         Instance.moneyText.text = "$" + playerMoney;
