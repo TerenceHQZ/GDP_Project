@@ -6,18 +6,18 @@ public class RetailJob : MonoBehaviour
 {
     public Material OutlineMaterial, CollectionMaterial, OriginalMaterial;
     Renderer bRenderer;
-    float retailTimer = 120f;
     int retailTasks = 4;
-    public int tasksCount = 0;
-    public bool readyForTap = false;
-    public bool retailJob = false;
-    public float timer = 0f;
+    int tasksCount = 0;
+    bool readyForTap = false;
+    public bool retailJobActive = false;
     public float retailMoney;
     public float retailHappiness;
 
     void Start()
     {
         bRenderer = GetComponent<MeshRenderer>();
+        StartCoroutine(RetailTasks());
+        StartCoroutine(UpdateMaterial());
     }
 
     void Update()
@@ -25,32 +25,11 @@ public class RetailJob : MonoBehaviour
         RetailerJob();
     }
 
-    void FixedUpdate()
-    {
-        if (retailJob)
-        {
-            if (readyForTap)
-            {
-                bRenderer.material = CollectionMaterial;
-            }
-            else
-            {
-                bRenderer.material = OutlineMaterial;
-                timer += Time.fixedDeltaTime;
-                if (timer >= retailTimer)
-                {
-                    readyForTap = true;
-                    timer = 0f;
-                }
-            }
-        }
-    }
-
     void RetailerJob()
     {
         if (tasksCount >= retailTasks) // completed the job
         {
-            retailJob = false;
+            retailJobActive = false;
             bRenderer.material = OriginalMaterial;
             tasksCount = 0;
             JobManager.SetJob(0);
@@ -74,6 +53,36 @@ public class RetailJob : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    IEnumerator RetailTasks()
+    {
+        yield return new WaitForSeconds(100f);
+        
+        if (retailJobActive)
+        {
+            readyForTap = true;
+            StartCoroutine(RetailTasks());
+        }
+    }
+
+    IEnumerator UpdateMaterial()
+    {
+        yield return new WaitForSeconds(1f);
+
+        if(retailJobActive)
+        {
+            if (readyForTap)
+            {
+                bRenderer.material = CollectionMaterial;
+            }
+            
+            else
+            {
+                bRenderer.material = OutlineMaterial;
+            }
+            StartCoroutine(UpdateMaterial());
         }
     }
 }
