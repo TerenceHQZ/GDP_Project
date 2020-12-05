@@ -11,6 +11,10 @@ public class JobManager : MonoBehaviour
 
     public static int playerJob;
 
+    public static int happinessLossPerTask = 2;
+
+    public static int tasksDone;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +24,10 @@ public class JobManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
+        /*if (Input.GetKeyDown(KeyCode.J))
         {
             JobAvailable();
-        }
+        }*/
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -40,9 +44,10 @@ public class JobManager : MonoBehaviour
                     if ((buildingPos - characterPos).magnitude <= 1.5f)
                     {
                         if(GetJob() == 0)
-                        if (playerJob == 0)
                         {
-                            GameObject hitGameObject = hit.collider.gameObject;
+                            // OPEN JOB SELECTION UI //
+
+                            /*GameObject hitGameObject = hit.collider.gameObject;
 
                             hitGameObject.GetComponent<Renderer>().material = originalMaterial[0];
 
@@ -54,8 +59,9 @@ public class JobManager : MonoBehaviour
                             WarehouseJob.WarehouseTaskReady = true;
 
                             Debug.Log("You accepted a warehouse job!");
-                            //Invoke("JobComplete", 5f);
-                            //Tasks.jobTaskComplete(); 
+                            Invoke("JobComplete", 5f);
+                            Tasks.jobTaskComplete();
+                            */
                         }
                         else
                         {
@@ -67,18 +73,10 @@ public class JobManager : MonoBehaviour
         }
     }
 
-    void JobAvailable()
+    /*void JobAvailable()
     {
         bRenderer[0].material = OutlineMaterial;
-    }
-    
-    void jobComplete()
-    {
-        Debug.Log("You have completed a job! You have earned $100!");
-        GameManager.SetMoney(100);
-        GameManager.SetHappiness(-20);
-        //Tasks.jobsCompleted += 1;
-    }
+    }*/
 
     public static void SetJob(int amount)
     {
