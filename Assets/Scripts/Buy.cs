@@ -7,6 +7,6 @@ public class Buy : MonoBehaviour
 {
     public void buy(int price)
     {
-        GameManager.SetMoney(-price);
+        GameManager.SetMoney(GameManager.GetMoney() -price);
     }
 }
