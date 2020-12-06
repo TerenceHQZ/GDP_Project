@@ -8,11 +8,12 @@ public class LightingManager : MonoBehaviour
     [SerializeField] private Light DirectionalLight;
     [SerializeField] private LightingPreset Preset;
     //Variables
-    [SerializeField, Range(7, 23)] public float TimeOfDay;
+    //[SerializeField, Range(7, 23)] public float TimeOfDay;
+    public static float TimeOfDay;
 
     private float UpdateAmount = 0.00166667f;
 
-    private void Awake()
+    private void Start()
     {
         TimeOfDay = PlayerPrefs.GetFloat("LightingTime", 7f);
 
@@ -22,6 +23,14 @@ public class LightingManager : MonoBehaviour
     private void OnDestroy()
     {
         PlayerPrefs.SetFloat("LightingTime", TimeOfDay);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            SetLightingTime(Random.Range(7, 24));
+        }
     }
 
     IEnumerator ChangeLighting()
@@ -53,17 +62,17 @@ public class LightingManager : MonoBehaviour
         yield return StartCoroutine(ChangeLighting());
     }
 
-    /*public void ChangeLightingTime(float targetTime) (ryan's code)
+    public static void SetLightingTime(float targetTime)
     {
         TimeOfDay = targetTime;
-        UpdateLighting(TimeOfDay / 24);
+        //UpdateLighting(TimeOfDay / 24);
     }
 
-    public static float GetTimeOfDay()
+    public static float GetLightingTIme()
     {
-        // return TimeOfDay;
+        return TimeOfDay;
     }
-    */ 
+     
 
     private void UpdateLighting(float timePercent)
     {
