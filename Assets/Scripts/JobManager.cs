@@ -25,13 +25,8 @@ public class JobManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.J))
-        {
-            JobAvailable();
-        }*/
-
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -48,9 +43,7 @@ public class JobManager : MonoBehaviour
                     {
                         if(GetJob() == 0)
                         {
-                            // OPEN JOB SELECTION UI //
-
-                            /*GameObject hitGameObject = hit.collider.gameObject;
+                            GameObject hitGameObject = hit.collider.gameObject;
 
                             hitGameObject.GetComponent<Renderer>().material = originalMaterial[0];
 
@@ -64,7 +57,6 @@ public class JobManager : MonoBehaviour
                             Debug.Log("You accepted a warehouse job!");
                             Invoke("JobComplete", 5f);
                             Tasks.jobTaskComplete();
-                            */
                         }
                         else
                         {
@@ -74,11 +66,6 @@ public class JobManager : MonoBehaviour
                 }
             }
         }
-    }
-
-    /*void JobAvailable()
-    {
-        bRenderer[0].material = OutlineMaterial;
     }*/
 
     public static void SetJob(int amount)

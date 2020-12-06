@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
             SetFoodBought(0);
 
             JobManager.SetJob(0);
+            JobManager.SetTaskDone(0);
 
             PlayerPrefs.SetInt("OwnedFan", 0);
             PlayerPrefs.SetInt("OwnedPC", 0);
@@ -51,6 +52,7 @@ public class GameManager : MonoBehaviour
             SetFoodBought(PlayerPrefs.GetInt("FoodBought"));
 
             JobManager.SetJob(PlayerPrefs.GetInt("PlayerJob"));
+            JobManager.SetTaskDone(PlayerPrefs.GetInt("TasksDone"));
         }
 
         SetHappiness(5);
@@ -83,6 +85,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("OwnedBed", 0);
 
             JobManager.SetJob(0);
+            JobManager.SetTaskDone(0);
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))

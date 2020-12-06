@@ -2,15 +2,17 @@
 
 public class WarehouseJob : MonoBehaviour
 {
-    public float taskCoolDown = 192f;
+    public float taskCoolDown = 45f;
     public static bool WarehouseTaskReady;
     private float timer;
 
     public GameObject character;
+    public GameObject floatingSprite;
 
     private void Start()
     {
         timer = PlayerPrefs.GetFloat("TaskCooldown", 0f);
+        Debug.Log("Warehouse cooldown: " + timer);
 
         if(timer > 0f)
         {
@@ -19,15 +21,31 @@ public class WarehouseJob : MonoBehaviour
         else
         {
             WarehouseTaskReady = true;
-        }
 
-        //JobManager.SetJob(1);
+            if(JobManager.GetJob() == 1)
+                floatingSprite.SetActive(true);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        PlayerPrefs.SetFloat("TaskCooldown", timer);
     }
 
     private void Update()
     {
+        if (WarehouseTaskReady && floatingSprite.activeSelf)
+        {
+            floatingSprite.transform.position = new Vector3(floatingSprite.transform.position.x,
+            floatingSprite.transform.position.y + (Mathf.Sin(Time.time) * 0.001f),
+            floatingSprite.transform.position.z);
 
-        // Debug.Log(JobManager.GetJob());
+            floatingSprite.transform.Rotate(0, 0.25f, 0);
+        }
+        else if (!WarehouseTaskReady && !floatingSprite.activeSelf && JobManager.GetJob() == 1 && timer <= 0f)
+        {
+            floatingSprite.SetActive(true);
+        }
 
         if (Input.GetMouseButtonDown(0) && JobManager.GetJob() == 1 && WarehouseTaskReady)
         {
@@ -51,7 +69,10 @@ public class WarehouseJob : MonoBehaviour
 
                         JobManager.SetTaskDone(JobManager.GetTaskDone() + 1);
 
+                        Debug.Log(JobManager.GetTaskDone());
+
                         // HIDE PROMPTS UI ON THE WAREHOUSE BUILDING
+                        floatingSprite.SetActive(false);
 
                         Invoke("ResetCooldown", taskCoolDown);
 
@@ -70,8 +91,7 @@ public class WarehouseJob : MonoBehaviour
 
         if (!WarehouseTaskReady && timer <= 0.5f)
         {
-            timer = 0f;
-            PlayerPrefs.SetFloat("TaskCooldown", 0f);
+            // ResetCooldown();
         }
     }
 
@@ -87,30 +107,7 @@ public class WarehouseJob : MonoBehaviour
         if (JobManager.GetJob() == 1)
         {
             // SHOW PROMPTS UI ON THE WAREHOUSE BUILDING
+            floatingSprite.SetActive(true);
         }
     }
-
-    /*
-    void OnCollisionEnter(Collision collision)
-    {
-        if(JobManager.playerJob == 1)
-        {
-            if (WarehouseTaskReady)
-            {
-                Debug.Log("Task completed");
-                GameManager.SetMoney(100);
-                WarehouseTaskReady = false;
-                Invoke("ResetCooldown", taskCoolDown);
-            }
-            else
-            {
-                Debug.Log("There is no task yet!");
-            }
-        }
-        else
-        {
-            Debug.Log("You do not have the warehouse job!");
-        }
-    }
-    */
 }

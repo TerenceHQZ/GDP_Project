@@ -12,7 +12,7 @@ public class DayTimeManager : MonoBehaviour
     public int startingHour = 7;
     public int startingMinute = 0;
 
-    public static int taskBaseMoney = 25;
+    public static int taskBaseMoney = 15;
 
     public TextMeshProUGUI dayTimeText;
 
@@ -40,9 +40,6 @@ public class DayTimeManager : MonoBehaviour
             SetHour(PlayerPrefs.GetInt("Hours"));
             SetMinute(PlayerPrefs.GetInt("Minutes"));
         }
-        
-        SetHour(17);
-        SetMinute(55);
 
         Instance.dayTimeText.text = "Day: " + GetDay() + " | " + GetHour().ToString("D2") + ":" + GetMinute().ToString("D2");
 
@@ -115,13 +112,15 @@ public class DayTimeManager : MonoBehaviour
             SetHour(7);
             SetDay(GetDay() + 1);
 
-            GameManager.SetMoney(GameManager.GetMoney() + (JobManager.tasksDone * taskBaseMoney));
+            GameManager.SetMoney(GameManager.GetMoney() + (JobManager.GetTaskDone() * taskBaseMoney));
             GameManager.SetHappiness(GameManager.GetHappiness() + JobManager.happinessLossBase);
             JobManager.SetJob(0);
+            JobManager.SetTaskDone(0);
 
             if (!School.wentToSchool)
             {
                 GameManager.SetHappiness(GameManager.GetHappiness() - School.loseHappinessAmount);
+                Debug.Log("Did not go to school");
             }
             School.wentToSchool = false;
         }
@@ -155,6 +154,4 @@ public class DayTimeManager : MonoBehaviour
     {
         return minutes;
     }
-
-    
 }

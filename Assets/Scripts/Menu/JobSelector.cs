@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class JobSelector : MonoBehaviour
 {
+    public GameObject WarehouseSprite;
+    public GameObject DeliverySprite;
+
     public void WarehouseJobSelect()
     {
         if(JobManager.GetJob() == 0)
         {
             JobManager.SetJob(1);
+            WarehouseSprite.SetActive(true);
             Debug.Log("Warehouse selected");
         }
         else
@@ -22,6 +25,7 @@ public class JobSelector : MonoBehaviour
         if (JobManager.GetJob() == 0)
         {
             JobManager.SetJob(2);
+            DeliverySprite.SetActive(true);
             Debug.Log("Delivery selected");
         }
         else
