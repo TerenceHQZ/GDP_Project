@@ -96,7 +96,14 @@ public class DayTimeManager : MonoBehaviour
 
             GameManager.SetMoney(GameManager.GetMoney() + (JobManager.tasksDone * taskBaseMoney));
             GameManager.SetHappiness(GameManager.GetHappiness() + JobManager.happinessLossBase);
+
+            if (!School.wentToSchool)
+            {
+                GameManager.SetHappiness(GameManager.GetHappiness() - School.loseHappinessAmount);
+            }
+            School.wentToSchool = false;
         }
+        
         PlayerPrefs.SetInt("Hours", hours);
         Instance.dayTimeText.text = "Day: " + GetDay() + " | " + GetHour().ToString("D2") + ":" + GetMinute().ToString("D2");
     }

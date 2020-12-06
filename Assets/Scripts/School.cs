@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class School : MonoBehaviour
 {
     public GameObject character;
-
-    bool inSchool = false;
+    public GameObject schoolFade;
+    public static int loseHappinessAmount = 25;
+    public static bool wentToSchool = false;
 
     void Update()
     {
@@ -20,23 +22,36 @@ public class School : MonoBehaviour
                     Vector3 buildingPos = hit.transform.position;
                     Vector3 characterPos = character.transform.position;
 
-                    Debug.Log((buildingPos - characterPos).magnitude);
-
                     if ((buildingPos - characterPos).magnitude <= 3f)
                     {
-                        GoToSchool();
+                        if ((DayTimeManager.GetHour() <= 8 && DayTimeManager.GetMinute() <= 59) && !wentToSchool)
+                        {
+                            StartCoroutine(SchoolFade());
+                            StartCoroutine(GoToSchool());
+                        }
+                        else
+                        {
+                            Debug.Log("u r late for school");
+                        }
                     }
                 }
             }
         }
     }
 
-    void GoToSchool()
+    IEnumerator GoToSchool()
     {
-        inSchool = true;
-
-        DayTimeManager.SetHour(16);
+        yield return new WaitForSeconds(1.2f);
+        wentToSchool = true;
+        DayTimeManager.SetHour(15);
         DayTimeManager.SetMinute(0);
-        //LightingManager.ChangeLightingTime(16f);
+        LightingManager.SetLightingTime(15);
+    }
+
+    IEnumerator SchoolFade()
+    {
+        schoolFade.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        schoolFade.SetActive(false);
     }
 }
