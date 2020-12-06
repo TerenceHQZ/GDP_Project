@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     private static int playerHappiness;
     private static int FoodBought;
 
-    public int startingMoney = 1000;
+    public int startingMoney = 300;
     public int startingHappiness = 70;
 
     public TextMeshProUGUI moneyText;

@@ -43,7 +43,7 @@ public class UpdateShopButton : MonoBehaviour
 
     IEnumerator SetButton()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0.25f);
 
         if (PlayerPrefs.GetInt("OwnedFan") == 1)
         {
