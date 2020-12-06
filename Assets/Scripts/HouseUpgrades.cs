@@ -17,6 +17,14 @@ public class HouseUpgrades : MonoBehaviour
     void Start()
     {
         bed = GameObject.Find("Bed");
+        upgradedBed = GameObject.Find("UpgradedBed");
+        table = GameObject.Find("Table");
+        upgradedTable = GameObject.Find("UpgradedTable");
+        chair = GameObject.Find("Chair");
+        upgradedChair = GameObject.Find("UpgradedChair");
+        pc = GameObject.Find("PC");
+        fan = GameObject.Find("Fan");
+        
         UpdateHouse();
     }
 
