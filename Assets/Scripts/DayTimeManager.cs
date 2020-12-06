@@ -108,7 +108,7 @@ public class DayTimeManager : MonoBehaviour
             School.wentToSchool = false;
         }
 
-        if (hours == 18)
+        /*if (hours == 18)
         {
             for (int i = 0; i < streetLights.Length; i++)
             {
@@ -122,7 +122,7 @@ public class DayTimeManager : MonoBehaviour
             {
                 streetLights[i].SetActive(false);
             }
-        }
+        }*/
 
         PlayerPrefs.SetInt("Hours", hours);
         Instance.dayTimeText.text = "Day: " + GetDay() + " | " + GetHour().ToString("D2") + ":" + GetMinute().ToString("D2");

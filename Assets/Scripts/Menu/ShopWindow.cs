@@ -21,10 +21,12 @@ public class ShopWindow : MonoBehaviour
         else if (playerMoney < bedCost)
         {
             // NOT ENOUGH MONEY
+            Debug.Log("NO $ - BED");
         }
         else if (ownedBed == 1)
         {
             // PLAYER ALREADY PURCHASED BED
+            Debug.Log("ALREADY OWNED");
         }
     }
 
@@ -41,10 +43,12 @@ public class ShopWindow : MonoBehaviour
         else if (playerMoney < chairCost)
         {
             // NOT ENOUGH MONEY
+            Debug.Log("NO $ - CHAIR");
         }
         else if (ownedChair == 1)
         {
             // PLAYER ALREADY PURCHASED CHAIR
+            Debug.Log("ALREADY OWNED");
         }
     }
     public void table()
@@ -60,10 +64,12 @@ public class ShopWindow : MonoBehaviour
         else if (playerMoney < tableCost)
         {
             // NOT ENOUGH MONEY
+            Debug.Log("NO $ - TABLE");
         }
         else if (ownedTable == 1)
         {
             // PLAYER ALREADY PURCHASED TABLE
+            Debug.Log("ALREADY OWNED");
         }
     }
 
@@ -80,10 +86,12 @@ public class ShopWindow : MonoBehaviour
         else if (playerMoney < pcCost)
         {
             // NOT ENOUGH MONEY
+            Debug.Log("NO $ - PC");
         }
         else if (ownedPc == 1)
         {
             // PLAYER ALREADY OWNED PC
+            Debug.Log("ALREADY OWNED");
         }
     }
 
@@ -100,10 +108,12 @@ public class ShopWindow : MonoBehaviour
         else if (playerMoney < fanCost)
         {
             // NOT ENOUGH MONEY
+            Debug.Log("NO $ - FAN");
         }
         else if (ownedFan == 1)
         {
             // PLAYER ALREADY OWNED FAN
+            Debug.Log("ALREADY OWNED");
         }
     }
 }
