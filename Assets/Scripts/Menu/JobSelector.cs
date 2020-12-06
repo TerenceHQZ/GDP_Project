@@ -5,7 +5,7 @@ public class JobSelector : MonoBehaviour
 {
     public void WarehouseJobSelect()
     {
-        if(JobManager.GetJob() != 0)
+        if(JobManager.GetJob() == 0)
         {
             JobManager.SetJob(1);
             Debug.Log("Warehouse selected");
@@ -19,7 +19,7 @@ public class JobSelector : MonoBehaviour
 
     public void DeliveryJobSelect()
     {
-        if (JobManager.GetJob() != 0)
+        if (JobManager.GetJob() == 0)
         {
             JobManager.SetJob(2);
             Debug.Log("Delivery selected");
@@ -33,7 +33,7 @@ public class JobSelector : MonoBehaviour
 
     public void FoodBeverageJobSelect()
     {
-        if (JobManager.GetJob() != 0)
+        if (JobManager.GetJob() == 0)
         {
             JobManager.SetJob(3);
             Debug.Log("Delivery selected");
@@ -47,7 +47,7 @@ public class JobSelector : MonoBehaviour
 
     public void RetailJobSelect()
     {
-        if (JobManager.GetJob() != 0)
+        if (JobManager.GetJob() == 0)
         {
             JobManager.SetJob(4);
             Debug.Log("Delivery selected");
