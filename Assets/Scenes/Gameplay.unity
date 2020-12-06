@@ -3069,6 +3069,7 @@ GameObject:
   - component: {fileID: 385832610}
   - component: {fileID: 385832611}
   - component: {fileID: 385832612}
+  - component: {fileID: 385832613}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3150,6 +3151,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DirectionalLight: {fileID: 705507994}
   Preset: {fileID: 11400000, guid: b10bfd1112f4a3a4da829eae83f18996, type: 2}
+--- !u!114 &385832613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385832607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d30b51c7fce64af4ca7bd7257937e371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BuyButton:
+  - {fileID: 640411671}
+  - {fileID: 420394957}
+  - {fileID: 1697871190}
+  - {fileID: 1293049002}
+  - {fileID: 1507064991}
+  ClaimedButton:
+  - {fileID: 1755229179}
+  - {fileID: 579676537}
+  - {fileID: 416450526}
+  - {fileID: 1200040816}
+  - {fileID: 1505500406}
 --- !u!224 &388578070 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2342655697232598675, guid: d3014fa8f85bfc14e841805196d01f5e, type: 3}
@@ -5484,7 +5509,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.4852991, g: 0.4852991, b: 0.4852991, a: 1}
+  m_Color: {r: 0.40470254, g: 0.40470254, b: 0.40470254, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -5541,7 +5566,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.041924156, y: 0.8733705, z: -0.479195, w: 0.07641008}
+  m_LocalRotation: {x: 0.012430859, y: 0.98601, z: -0.14208527, w: 0.08626476}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -11804,6 +11829,10 @@ PrefabInstance:
     - target: {fileID: 7257143531052658560, guid: 7c088749fb79d2641a3913f39f3c9273, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257143531092060720, guid: 7c088749fb79d2641a3913f39f3c9273, type: 3}
+      propertyPath: m_Name
+      value: BuyButton (4)
       objectReference: {fileID: 0}
     - target: {fileID: 7257143531179501564, guid: 7c088749fb79d2641a3913f39f3c9273, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
