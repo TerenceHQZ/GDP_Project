@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour
 
             SetMoney(startingMoney);
             SetHappiness(startingHappiness);
+            SetFoodBought(0);
+            LightingManager.SetLightingTime(7);
 
             JobManager.SetJob(0);
         }
