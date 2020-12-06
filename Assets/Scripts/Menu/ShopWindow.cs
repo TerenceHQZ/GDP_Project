@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class ShopWindow : MonoBehaviour
 {
@@ -13,60 +10,100 @@ public class ShopWindow : MonoBehaviour
 
     public void bed()
     {
-        if (GameManager.GetMoney() >= bedCost)
+        int playerMoney = GameManager.GetMoney();
+        int ownedBed = PlayerPrefs.GetInt("OwnedBed", 0);
+
+        if (playerMoney >= bedCost && ownedBed == 0)
         {
-            GameManager.SetMoney(GameManager.GetMoney() - bedCost);
+            GameManager.SetMoney(playerMoney - bedCost);
+            PlayerPrefs.SetInt("OwnedBed", 1);
         }
-        else
+        else if (playerMoney < bedCost)
         {
             // NOT ENOUGH MONEY
+        }
+        else if (ownedBed == 1)
+        {
+            // PLAYER ALREADY PURCHASED BED
         }
     }
 
     public void chair()
     {
-        if (GameManager.GetMoney() >= chairCost)
+        int playerMoney = GameManager.GetMoney();
+        int ownedChair = PlayerPrefs.GetInt("OwnedChair", 0);
+
+        if (playerMoney >= chairCost && ownedChair == 0)
         {
-            GameManager.SetMoney(GameManager.GetMoney() - chairCost);
+            GameManager.SetMoney(playerMoney - chairCost);
+            PlayerPrefs.SetInt("OwnedChair", 1);
         }
-        else
+        else if (playerMoney < chairCost)
         {
             // NOT ENOUGH MONEY
+        }
+        else if (ownedChair == 1)
+        {
+            // PLAYER ALREADY PURCHASED CHAIR
         }
     }
     public void table()
     {
-        if (GameManager.GetMoney() >= tableCost)
+        int playerMoney = GameManager.GetMoney();
+        int ownedTable = PlayerPrefs.GetInt("OwnedTable", 0);
+
+        if (playerMoney >= tableCost && ownedTable == 0)
         {
-            GameManager.SetMoney(GameManager.GetMoney() - tableCost);
+            GameManager.SetMoney(playerMoney - tableCost);
+            PlayerPrefs.SetInt("OwnedTable", 1);
         }
-        else
+        else if (playerMoney < tableCost)
         {
             // NOT ENOUGH MONEY
+        }
+        else if (ownedTable == 1)
+        {
+            // PLAYER ALREADY PURCHASED TABLE
         }
     }
 
     public void pc()
     {
-        if (GameManager.GetMoney() >= pcCost)
+        int playerMoney = GameManager.GetMoney();
+        int ownedPc = PlayerPrefs.GetInt("OwnedPC", 0);
+
+        if (playerMoney >= pcCost && ownedPc == 0)
         {
-            GameManager.SetMoney(GameManager.GetMoney() - pcCost);
+            GameManager.SetMoney(playerMoney - pcCost);
+            PlayerPrefs.SetInt("OwnedPC", 1);
         }
-        else
+        else if (playerMoney < pcCost)
         {
             // NOT ENOUGH MONEY
+        }
+        else if (ownedPc == 1)
+        {
+            // PLAYER ALREADY OWNED PC
         }
     }
 
     public void fan()
     {
-        if (GameManager.GetMoney() >= fanCost)
+        int playerMoney = GameManager.GetMoney();
+        int ownedFan = PlayerPrefs.GetInt("OwnedFan", 0);
+
+        if (playerMoney >= fanCost && ownedFan == 0)
         {
-            GameManager.SetMoney(GameManager.GetMoney() - fanCost);
+            GameManager.SetMoney(playerMoney - fanCost);
+            PlayerPrefs.SetInt("OwnedFan", 1);
         }
-        else
+        else if (playerMoney < fanCost)
         {
             // NOT ENOUGH MONEY
+        }
+        else if (ownedFan == 1)
+        {
+            // PLAYER ALREADY OWNED FAN
         }
     }
 }
