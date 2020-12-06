@@ -41,9 +41,6 @@ public class DayTimeManager : MonoBehaviour
             SetMinute(PlayerPrefs.GetInt("Minutes"));
         }
 
-        SetHour(17);
-        SetMinute(55);
-
         Instance.dayTimeText.text = "Day: " + GetDay() + " | " + GetHour().ToString("D2") + ":" + GetMinute().ToString("D2");
 
         StartCoroutine(AddMinutes());
