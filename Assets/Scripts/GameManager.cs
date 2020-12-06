@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     // Player's money & happiness
     private static int playerMoney;
     private static int playerHappiness;
+    private static int FoodBought;
 
     public int startingMoney = 1000;
     public int startingHappiness = 70;
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
 
             SetMoney(startingMoney);
             SetHappiness(startingHappiness);
+            SetFoodBought(0);
 
             JobManager.SetJob(0);
         }
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour
         {
             SetMoney(PlayerPrefs.GetInt("PlayerMoney"));
             SetHappiness(PlayerPrefs.GetInt("PlayerHappiness"));
+            SetFoodBought(PlayerPrefs.GetInt("FoodBought"));
 
             JobManager.SetJob(PlayerPrefs.GetInt("PlayerJob"));
         }
@@ -140,5 +143,16 @@ public class GameManager : MonoBehaviour
     public static int GetHappiness()
     {
         return playerHappiness;
+    }
+
+    public static void SetFoodBought(int amount)
+    {
+        FoodBought = amount;
+        PlayerPrefs.SetInt("FoodBought", FoodBought);
+    }
+
+    public static int GetFoodBought()
+    {
+        return FoodBought;
     }
 }
