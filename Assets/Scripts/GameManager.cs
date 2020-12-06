@@ -64,6 +64,12 @@ public class GameManager : MonoBehaviour
             SetFoodBought(0);
             LightingManager.SetLightingTime(7);
 
+            PlayerPrefs.SetInt("OwnedFan", 0);
+            PlayerPrefs.SetInt("OwnedPC", 0);
+            PlayerPrefs.SetInt("OwnedTable", 0);
+            PlayerPrefs.SetInt("OwnedChair", 0);
+            PlayerPrefs.SetInt("OwnedBed", 0);
+
             JobManager.SetJob(0);
         }
 
