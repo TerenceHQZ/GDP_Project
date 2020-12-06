@@ -117,6 +117,7 @@ public class DayTimeManager : MonoBehaviour
 
             GameManager.SetMoney(GameManager.GetMoney() + (JobManager.tasksDone * taskBaseMoney));
             GameManager.SetHappiness(GameManager.GetHappiness() + JobManager.happinessLossBase);
+            JobManager.SetJob(0);
 
             if (!School.wentToSchool)
             {
