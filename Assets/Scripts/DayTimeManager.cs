@@ -41,6 +41,9 @@ public class DayTimeManager : MonoBehaviour
             SetMinute(PlayerPrefs.GetInt("Minutes"));
         }
 
+        SetHour(17);
+        SetMinute(55);
+
         Instance.dayTimeText.text = "Day: " + GetDay() + " | " + GetHour().ToString("D2") + ":" + GetMinute().ToString("D2");
 
         StartCoroutine(AddMinutes());
@@ -58,21 +61,7 @@ public class DayTimeManager : MonoBehaviour
             SetMinute(startingMinute);
         }
 
-        if (hours >= 18)
-        {
-            for (int i = 0; i < streetLights.Length; i++)
-            {
-                streetLights[i].SetActive(true);
-            }
-        }
-
-        else if (hours < 18)
-        {
-            for (int i = 0; i < streetLights.Length; i++)
-            {
-                streetLights[i].SetActive(false);
-            }
-        }
+        UpdateStreetLights();
     }
 
     public void OnDestroy()
@@ -153,5 +142,24 @@ public class DayTimeManager : MonoBehaviour
     public static int GetMinute()
     {
         return minutes;
+    }
+
+    void UpdateStreetLights()
+    {
+        if (hours >= 18)
+        {
+            for (int i = 0; i < streetLights.Length; i++)
+            {
+                streetLights[i].SetActive(true);
+            }
+        }
+
+        else if (hours < 18 && hours >= 7)
+        {
+            for (int i = 0; i < streetLights.Length; i++)
+            {
+                streetLights[i].SetActive(false);
+            }
+        }
     }
 }
