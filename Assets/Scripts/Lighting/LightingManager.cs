@@ -24,7 +24,13 @@ public class LightingManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            SetLightingTime(Random.Range(7, 24));
+            SetLightingTime(GetLightingTime() + 1f);
+            Debug.Log(GetLightingTime());
+        }
+        else if (Input.GetKeyDown(KeyCode.K))
+        {
+            SetLightingTime(GetLightingTime() - 1f);
+            Debug.Log(GetLightingTime());
         }
     }
 
@@ -65,7 +71,7 @@ public class LightingManager : MonoBehaviour
         //UpdateLighting(TimeOfDay / 24);
     }
 
-    public static float GetLightingTIme()
+    public static float GetLightingTime()
     {
         return TimeOfDay;
     }
