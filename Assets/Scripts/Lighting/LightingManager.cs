@@ -20,11 +20,6 @@ public class LightingManager : MonoBehaviour
         StartCoroutine(ChangeLighting());
     }
 
-    private void OnDestroy()
-    {
-        PlayerPrefs.SetFloat("LightingTime", TimeOfDay);
-    }
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
