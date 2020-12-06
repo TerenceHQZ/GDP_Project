@@ -4,21 +4,41 @@ public class JobSelector : MonoBehaviour
 {
     public void WarehouseJobSelect()
     {
-        JobManager.SetJob(1);
+        if(JobManager.GetJob() != 0)
+            JobManager.SetJob(1);
+        else
+        {
+            // ALREADY HAVE A JOB
+        }
     }
 
     public void DeliveryJobSelect()
     {
-        JobManager.SetJob(2);
+        if (JobManager.GetJob() != 0)
+            JobManager.SetJob(2);
+        else
+        {
+            // ALREADY HAVE A JOB
+        }
     }
 
     public void FoodBeverageJobSelect()
     {
-        JobManager.SetJob(3);
+        if (JobManager.GetJob() != 0)
+            JobManager.SetJob(3);
+        else
+        {
+            // ALREADY HAVE A JOB
+        }
     }
 
     public void RetailJobSelect()
     {
-        JobManager.SetJob(4);
+        if (JobManager.GetJob() != 0)
+            JobManager.SetJob(4);
+        else
+        {
+            // ALREADY HAVE A JOB
+        }
     }
 }

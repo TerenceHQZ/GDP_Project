@@ -50,6 +50,8 @@ public class LightingManager : MonoBehaviour
                 TimeOfDay = 7f;
             }
 
+            PlayerPrefs.SetFloat("LightingTime", TimeOfDay);
+
             TimeOfDay %= 24;
 
             UpdateLighting(TimeOfDay / 24);
