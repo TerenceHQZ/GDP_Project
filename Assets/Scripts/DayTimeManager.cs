@@ -18,7 +18,7 @@ public class DayTimeManager : MonoBehaviour
 
     public static DayTimeManager Instance;
 
-    private static GameObject[] streetLights;
+    public GameObject[] streetLights;
 
     void Awake()
     {
@@ -41,7 +41,8 @@ public class DayTimeManager : MonoBehaviour
             SetMinute(PlayerPrefs.GetInt("Minutes"));
         }
         
-        streetLights = GameObject.FindGameObjectsWithTag("StreetLight");
+        SetHour(17);
+        SetMinute(55);
 
         Instance.dayTimeText.text = "Day: " + GetDay() + " | " + GetHour().ToString("D2") + ":" + GetMinute().ToString("D2");
 
@@ -58,6 +59,22 @@ public class DayTimeManager : MonoBehaviour
             SetDay(startingDay);
             SetHour(startingHour);
             SetMinute(startingMinute);
+        }
+
+        if (hours >= 18)
+        {
+            for (int i = 0; i < streetLights.Length; i++)
+            {
+                streetLights[i].SetActive(true);
+            }
+        }
+
+        else if (hours < 18)
+        {
+            for (int i = 0; i < streetLights.Length; i++)
+            {
+                streetLights[i].SetActive(false);
+            }
         }
     }
 
@@ -107,7 +124,6 @@ public class DayTimeManager : MonoBehaviour
             }
             School.wentToSchool = false;
         }
-        UpdateStreetLights();
         
         PlayerPrefs.SetInt("Hours", hours);
         Instance.dayTimeText.text = "Day: " + GetDay() + " | " + GetHour().ToString("D2") + ":" + GetMinute().ToString("D2");
@@ -139,22 +155,5 @@ public class DayTimeManager : MonoBehaviour
         return minutes;
     }
 
-    static void UpdateStreetLights()
-    {
-        if (hours == 18)
-        {
-            for (int i = 0; i < streetLights.Length; i++)
-            {
-                streetLights[i].SetActive(true);
-            }
-        }
-
-        if (hours == 7)
-        {
-            for (int i = 0; i < streetLights.Length; i++)
-            {
-                streetLights[i].SetActive(false);
-            }
-        }
-    }
+    
 }
