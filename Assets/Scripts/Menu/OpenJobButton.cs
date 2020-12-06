@@ -5,10 +5,8 @@ public class OpenJobButton : MonoBehaviour
     public GameObject character;
     public GameObject JobWindow;
 
-    private void Update()
+    void Update()
     {
-        // Debug.Log(JobManager.GetJob());
-
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -16,14 +14,14 @@ public class OpenJobButton : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.name == "Office")
+                if (hit.transform.name == "typeMesh3")
                 {
                     Vector3 buildingPos = hit.transform.position;
                     Vector3 characterPos = character.transform.position;
 
                     Debug.Log((buildingPos - characterPos).magnitude);
 
-                    if ((buildingPos - characterPos).magnitude <= 2.5f)
+                    if ((buildingPos - characterPos).magnitude <= 3f)
                     {
                         JobWindow.SetActive(true);
                     }
