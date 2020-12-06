@@ -107,23 +107,8 @@ public class DayTimeManager : MonoBehaviour
             }
             School.wentToSchool = false;
         }
-
-        /*if (hours == 18)
-        {
-            for (int i = 0; i < streetLights.Length; i++)
-            {
-                streetLights[i].SetActive(true);
-            }
-        }
-
-        if (hours == 7)
-        {
-            for (int i = 0; i < streetLights.Length; i++)
-            {
-                streetLights[i].SetActive(false);
-            }
-        }*/
-
+        UpdateStreetLights();
+        
         PlayerPrefs.SetInt("Hours", hours);
         Instance.dayTimeText.text = "Day: " + GetDay() + " | " + GetHour().ToString("D2") + ":" + GetMinute().ToString("D2");
     }
@@ -152,5 +137,24 @@ public class DayTimeManager : MonoBehaviour
     public static int GetMinute()
     {
         return minutes;
+    }
+
+    static void UpdateStreetLights()
+    {
+        if (hours == 18)
+        {
+            for (int i = 0; i < streetLights.Length; i++)
+            {
+                streetLights[i].SetActive(true);
+            }
+        }
+
+        if (hours == 7)
+        {
+            for (int i = 0; i < streetLights.Length; i++)
+            {
+                streetLights[i].SetActive(false);
+            }
+        }
     }
 }
