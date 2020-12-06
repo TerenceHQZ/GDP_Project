@@ -3554,6 +3554,7 @@ MonoBehaviour:
   startingHappiness: 70
   moneyText: {fileID: 1082617343}
   happinessText: {fileID: 1332567017}
+  LoseWindow: {fileID: 883434579}
 --- !u!114 &385832610
 MonoBehaviour:
   m_ObjectHideFlags: 0

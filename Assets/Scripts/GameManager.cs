@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI happinessText;
 
     public static GameManager Instance;
+    public GameObject LoseWindow;
 
     void Awake()
     {
@@ -29,20 +30,30 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("AccountExist", 1);
 
-            SetMoney(startingMoney);
             SetHappiness(startingHappiness);
+            SetMoney(startingMoney);
             SetFoodBought(0);
 
             JobManager.SetJob(0);
+
+            PlayerPrefs.SetInt("OwnedFan", 0);
+            PlayerPrefs.SetInt("OwnedPC", 0);
+            PlayerPrefs.SetInt("OwnedTable", 0);
+            PlayerPrefs.SetInt("OwnedChair", 0);
+            PlayerPrefs.SetInt("OwnedBed", 0);
+
+            PlayerPrefs.SetFloat("TaskCooldown", 0f);
         }
         else
         {
-            SetMoney(PlayerPrefs.GetInt("PlayerMoney"));
             SetHappiness(PlayerPrefs.GetInt("PlayerHappiness"));
+            SetMoney(PlayerPrefs.GetInt("PlayerMoney"));
             SetFoodBought(PlayerPrefs.GetInt("FoodBought"));
 
             JobManager.SetJob(PlayerPrefs.GetInt("PlayerJob"));
         }
+
+        SetHappiness(5);
 
         moneyText.text = "$" + playerMoney;
         happinessText.text = playerHappiness + "/100";
@@ -59,9 +70,10 @@ public class GameManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("AccountExist", 1);
 
-            SetMoney(startingMoney);
             SetHappiness(startingHappiness);
+            SetMoney(startingMoney);
             SetFoodBought(0);
+
             LightingManager.SetLightingTime(7);
 
             PlayerPrefs.SetInt("OwnedFan", 0);
@@ -98,7 +110,7 @@ public class GameManager : MonoBehaviour
         if (GetHappiness() <= 0)
         {
             PlayerPrefs.SetInt("AccountExist", 0);
-            Debug.Log("Lose");
+
             yield return null;
         }
         else
@@ -119,6 +131,9 @@ public class GameManager : MonoBehaviour
         {
             // show lose screen
             // end the game
+            playerHappiness = 0;
+            PlayerPrefs.SetInt("AccountExist", 0);
+            Instance.LoseWindow.SetActive(true);
         }
     }
 
@@ -140,6 +155,9 @@ public class GameManager : MonoBehaviour
         {
             // show lose screen
             // end the game
+            playerHappiness = 0;
+            PlayerPrefs.SetInt("AccountExist", 0);
+            Instance.LoseWindow.SetActive(true);
         }
     }
 

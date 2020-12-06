@@ -8,7 +8,6 @@ public class LightingManager : MonoBehaviour
     [SerializeField] private Light DirectionalLight;
     [SerializeField] private LightingPreset Preset;
     //Variables
-    //[SerializeField, Range(7, 23)] public float TimeOfDay;
     public static float TimeOfDay;
 
     private float UpdateAmount = 0.00166667f;
