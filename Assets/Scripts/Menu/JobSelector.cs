@@ -36,7 +36,7 @@ public class JobSelector : MonoBehaviour
         if (JobManager.GetJob() == 0)
         {
             JobManager.SetJob(3);
-            Debug.Log("Delivery selected");
+            Debug.Log("FoodBeverage selected");
         }
         else
         {
@@ -50,7 +50,7 @@ public class JobSelector : MonoBehaviour
         if (JobManager.GetJob() == 0)
         {
             JobManager.SetJob(4);
-            Debug.Log("Delivery selected");
+            Debug.Log("Retail selected");
         }
         else
         {
