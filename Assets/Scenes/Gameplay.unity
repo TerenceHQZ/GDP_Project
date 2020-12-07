@@ -2023,7 +2023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e80b00369b21037459dc301a1a05dbb4, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e80b00369b21037459dc301a1a05dbb4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6628,7 +6628,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.4909495, g: 0.4909495, b: 0.4909495, a: 1}
+  m_Color: {r: 0.43935865, g: 0.43935865, b: 0.43935865, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -6685,7 +6685,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.07533347, y: 0.50097024, z: -0.8610649, w: 0.043829247}
+  m_LocalRotation: {x: 0.025536278, y: 0.9524755, z: -0.2918808, w: 0.08333086}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -7546,12 +7546,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 824838216}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.00000011776, y: 0.033, z: -0.0000000014562}
-  m_LocalScale: {x: 0.0020360774, y: 0.0011442754, z: 0.0020360774}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.2899933, y: 3.624488, z: 2.6899996}
+  m_LocalScale: {x: 0.24507655, y: 0.23372315, z: 1.415622}
   m_Children: []
-  m_Father: {fileID: 2113311523}
-  m_RootOrder: 0
+  m_Father: {fileID: 1091202606}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &824838218
 SpriteRenderer:
@@ -9103,7 +9103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8653db0db9efdb0408009d839cb0d98a, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8653db0db9efdb0408009d839cb0d98a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9465,6 +9465,7 @@ Transform:
   - {fileID: 889670312}
   - {fileID: 1076210921}
   - {fileID: 2051426092}
+  - {fileID: 824838217}
   - {fileID: 2113311523}
   - {fileID: 877434047}
   m_Father: {fileID: 0}
