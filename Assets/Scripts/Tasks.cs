@@ -8,9 +8,10 @@ public class Tasks : MonoBehaviour
 
     private float time = 0.0f;
     public float interpolationPeriod = 0.1f;
-    public float dailyMoneySpent = 0f;
+    public static int dailyMoneySpent = 0;
     int jobsCompleted = 0;
     public static Tasks Instance;
+    public GameObject[] CheckedBox;
 
     void Awake()
     {
@@ -20,7 +21,7 @@ public class Tasks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(attendSchool());
     }
     // Update is called once per frame
     void Update()
@@ -32,7 +33,7 @@ public class Tasks : MonoBehaviour
         {
             time = 0.0f;
 
-            if(dailyMoneySpent <= 20f)
+            if(dailyMoneySpent <= 20)
             {
                 //savingComplete();
                 Debug.Log("You have saved less than $20 today.");
@@ -42,11 +43,27 @@ public class Tasks : MonoBehaviour
                 Debug.Log("You have spent more than $20 in a day. Try to budget out your spenditure in a day.");
             }
             
-            dailyMoneySpent = 0f; //reset the daily money spent every day
+            dailyMoneySpent = 0; //reset the daily money spent every day
         }
     }
 
-     void jobTaskComplete()
+    IEnumerator attendSchool()
+    {
+        yield return new WaitForSeconds(1f);
+
+        Debug.Log(School.wentToSchool);
+        if (School.wentToSchool)
+        {
+            CheckedBox[2].SetActive(true);
+        }
+        else
+        {
+            CheckedBox[2].SetActive(false);
+        }
+        StartCoroutine(attendSchool());
+    }
+
+     /*void jobTaskComplete()
     {
         if (jobsCompleted == 3)
         {
@@ -56,11 +73,11 @@ public class Tasks : MonoBehaviour
         {
             Debug.Log("Completed" + jobsCompleted + "jobs");
         }
-    }
+    }*/
 
     void moneySpent()
     {
-        dailyMoneySpent = 0f;
+        dailyMoneySpent = 0;
     }
 
     

@@ -4267,6 +4267,24 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3380814292968854083, guid: e6c7abc55ae090c4698251bcce1e3625, type: 3}
   m_PrefabInstance: {fileID: 3380814293301218026}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &472946860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472946856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 589efacac274824489ab4f5dec891519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsBought: 0
+  interpolationPeriod: 0.1
+  CheckedBox:
+  - {fileID: 1110583106}
+  - {fileID: 1864113192}
+  - {fileID: 1188549890}
 --- !u!1 &473844473
 GameObject:
   m_ObjectHideFlags: 0
@@ -6122,7 +6140,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.4165152, g: 0.4165152, b: 0.4165152, a: 1}
+  m_Color: {r: 0.43539038, g: 0.43539038, b: 0.43539038, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -6179,7 +6197,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.016946897, y: 0.9771811, z: -0.19370379, w: 0.08549232}
+  m_LocalRotation: {x: 0.08376963, y: 0.27498314, z: -0.95749056, w: 0.024057923}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -8667,6 +8685,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
+--- !u!1 &1110583106 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3380814291675723730, guid: e6c7abc55ae090c4698251bcce1e3625, type: 3}
+  m_PrefabInstance: {fileID: 3380814293301218026}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1139067525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a8011fee79f6eab488923f8a3984fd71, type: 3}
@@ -8791,6 +8814,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
+--- !u!1 &1188549890 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3380814292887955434, guid: e6c7abc55ae090c4698251bcce1e3625, type: 3}
+  m_PrefabInstance: {fileID: 3380814293301218026}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1194928046 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5889df008fd9f244b9f6b707e36c4716, type: 3}
@@ -12780,6 +12808,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8011fee79f6eab488923f8a3984fd71, type: 3}
+--- !u!1 &1864113192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3380814292370755635, guid: e6c7abc55ae090c4698251bcce1e3625, type: 3}
+  m_PrefabInstance: {fileID: 3380814293301218026}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1865300150
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14901,7 +14934,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3380814292640547226, guid: e6c7abc55ae090c4698251bcce1e3625, type: 3}
       propertyPath: m_text
-      value: 
+      value: Attend School
       objectReference: {fileID: 0}
     - target: {fileID: 3380814292968854080, guid: e6c7abc55ae090c4698251bcce1e3625, type: 3}
       propertyPath: m_Sprite
@@ -14929,7 +14962,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3380814292968854082, guid: e6c7abc55ae090c4698251bcce1e3625, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3380814292968854083, guid: e6c7abc55ae090c4698251bcce1e3625, type: 3}
       propertyPath: m_LocalPosition.x
