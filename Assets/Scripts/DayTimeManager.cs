@@ -19,6 +19,8 @@ public class DayTimeManager : MonoBehaviour
     public static DayTimeManager Instance;
 
     public GameObject[] streetLights;
+    public GameObject fadeAnimation;
+    static bool isFading;
 
     void Awake()
     {
@@ -40,7 +42,6 @@ public class DayTimeManager : MonoBehaviour
             SetHour(PlayerPrefs.GetInt("Hours"));
             SetMinute(PlayerPrefs.GetInt("Minutes"));
         }
-
         Instance.dayTimeText.text = "Day: " + GetDay() + " | " + GetHour().ToString("D2") + ":" + GetMinute().ToString("D2");
 
         StartCoroutine(AddMinutes());
@@ -58,6 +59,7 @@ public class DayTimeManager : MonoBehaviour
             SetMinute(startingMinute);
         }
 
+        StartCoroutine(Fade());
         UpdateStreetLights();
     }
 
@@ -116,8 +118,10 @@ public class DayTimeManager : MonoBehaviour
             {
                 floatingIcon[i].SetActive(false);
             }
+            
+            isFading = true;
         }
-        
+
         PlayerPrefs.SetInt("Hours", hours);
         Instance.dayTimeText.text = "Day: " + GetDay() + " | " + GetHour().ToString("D2") + ":" + GetMinute().ToString("D2");
     }
@@ -164,6 +168,19 @@ public class DayTimeManager : MonoBehaviour
             {
                 streetLights[i].SetActive(false);
             }
+        }
+    }
+
+    IEnumerator Fade()
+    {
+        if (isFading)
+        {
+            fadeAnimation.SetActive(true);
+            isFading = false;
+
+            yield return new WaitForSeconds(3f);
+            
+            fadeAnimation.SetActive(false);
         }
     }
 }
