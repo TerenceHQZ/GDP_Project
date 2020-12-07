@@ -15,6 +15,7 @@ public class LightingManager : MonoBehaviour
     private void Start()
     {
         TimeOfDay = PlayerPrefs.GetFloat("LightingTime", 7f);
+        Debug.Log("Lighting Time: " + GetLightingTime());
 
         StartCoroutine(ChangeLighting());
     }

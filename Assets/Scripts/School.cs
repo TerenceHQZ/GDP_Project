@@ -5,7 +5,7 @@ public class School : MonoBehaviour
 {
     public GameObject character;
     public GameObject schoolFade;
-    public static int loseHappinessAmount = 25;
+    public static int loseHappinessAmount = 20;
     public static bool wentToSchool = false;
 
     void Update()
@@ -29,9 +29,14 @@ public class School : MonoBehaviour
                             StartCoroutine(SchoolFade());
                             StartCoroutine(GoToSchool());
                         }
-                        else
+                        else if ((DayTimeManager.GetHour() >= 9 && DayTimeManager.GetHour() <= 12) && !wentToSchool)
                         {
                             Debug.Log("u r late for school");
+
+                            GameManager.SetHappiness(GameManager.GetHappiness() - 10);
+
+                            StartCoroutine(SchoolFade());
+                            StartCoroutine(GoToSchool());
                         }
                     }
                 }

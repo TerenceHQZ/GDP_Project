@@ -27,8 +27,6 @@ public class DeliveryJob : MonoBehaviour
         {
             DeliveryTaskReady = true;
 
-            Debug.Log(JobManager.GetJob());
-
             if(JobManager.GetJob() == 2)
                 floatingSprite.SetActive(true);
         }
