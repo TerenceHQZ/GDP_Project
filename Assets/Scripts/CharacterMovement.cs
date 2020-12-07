@@ -18,11 +18,20 @@ public class CharacterMovement : MonoBehaviour
         Vector3 cameraDirection = new Vector3(playerJoystick.Horizontal, 0f, playerJoystick.Vertical);
         cameraDirection = Camera.main.transform.TransformDirection(cameraDirection);
         cameraDirection.y = 0.0f;
-        
+
         rb.AddForce(cameraDirection * movementSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
 
-        clampPos.x = Mathf.Clamp(transform.position.x, -12, 12);
-        clampPos.z = Mathf.Clamp(transform.position.z, -12, 12);
-        transform.position = clampPos;
+        if (!GoToHome.atHome)
+        {
+            clampPos.x = Mathf.Clamp(transform.position.x, -12, 12);
+            clampPos.z = Mathf.Clamp(transform.position.z, -12, 12);
+            transform.position = clampPos;
+        }
+        else
+        {
+            clampPos.x = Mathf.Clamp(transform.position.x, 102.3f, 105.5f);
+            clampPos.z = Mathf.Clamp(transform.position.z, 10, 13.6f);
+            transform.position = clampPos;
+        }
     }
 }

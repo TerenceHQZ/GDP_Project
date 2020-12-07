@@ -8,6 +8,8 @@ public class GoToHome : MonoBehaviour
     public GameObject mainCamera;
     public GameObject homeCamera;
     public GameObject quitButton;
+    public GameObject character;
+    public static bool atHome;
 
     public void SwapViews()
     {
@@ -24,7 +26,9 @@ public class GoToHome : MonoBehaviour
     IEnumerator SwapToHomeView()
     {
         StartCoroutine(HomeFadeAnimation());
+        atHome = true;
         yield return new WaitForSeconds(1f);
+        character.transform.position = new Vector3(104.19352f, 2.52999997f, 11.6938114f);
         mainCamera.SetActive(false);
         homeCamera.SetActive(true);
         quitButton.SetActive(true);
@@ -33,7 +37,9 @@ public class GoToHome : MonoBehaviour
     IEnumerator SwapToMainView()
     {
         StartCoroutine(HomeFadeAnimation());
+        atHome = false;
         yield return new WaitForSeconds(1f);
+        character.transform.position = new Vector3(-0.639999986f, 0.400000006f, -9.47000027f);
         mainCamera.SetActive(true);
         homeCamera.SetActive(false);
         quitButton.SetActive(false);
