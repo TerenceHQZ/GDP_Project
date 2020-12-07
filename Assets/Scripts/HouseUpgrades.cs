@@ -4,37 +4,24 @@ using UnityEngine;
 
 public class HouseUpgrades : MonoBehaviour
 {
-    public static GameObject bed;
-    public static GameObject upgradedBed;
-    public static GameObject table;
-    public static GameObject upgradedTable;
-    public static GameObject chair;
-    public static GameObject upgradedChair;
-    public static GameObject pc;
-    public static GameObject fan;
-
+    public GameObject bed;
+    public GameObject upgradedBed;
+    public GameObject table;
+    public GameObject upgradedTable;
+    public GameObject chair;
+    public GameObject upgradedChair;
+    public GameObject pc;
+    public GameObject fan;
 
     void Start()
     {
-        bed = GameObject.Find("Bed");
-        upgradedBed = GameObject.Find("UpgradedBed");
-        table = GameObject.Find("Table");
-        upgradedTable = GameObject.Find("UpgradedTable");
-        chair = GameObject.Find("Chair");
-        upgradedChair = GameObject.Find("UpgradedChair");
-        pc = GameObject.Find("PC");
-        fan = GameObject.Find("Fan");
-        
-        UpdateHouse();
+        StartCoroutine(UpdateHouse());
     }
 
-    void Update()
+    IEnumerator UpdateHouse()
     {
-        
-    }
+        yield return new WaitForSeconds(1f);
 
-    public static void UpdateHouse()
-    {
         if (PlayerPrefs.GetInt("OwnedBed") == 1)
         {
             upgradedBed.SetActive(true);
@@ -85,5 +72,7 @@ public class HouseUpgrades : MonoBehaviour
         {
             fan.SetActive(false);
         }
+
+        StartCoroutine(UpdateHouse());
     }
 }
