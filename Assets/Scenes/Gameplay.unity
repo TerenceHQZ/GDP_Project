@@ -3333,6 +3333,7 @@ GameObject:
   - component: {fileID: 385832612}
   - component: {fileID: 385832613}
   - component: {fileID: 385832614}
+  - component: {fileID: 385832615}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3469,6 +3470,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 171871530}
   JobWindow: {fileID: 469982789}
+--- !u!114 &385832615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385832607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 589efacac274824489ab4f5dec891519, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemsBought: 0
+  interpolationPeriod: 0.1
+  CheckedBox:
+  - {fileID: 1110583106}
+  - {fileID: 1864113192}
+  - {fileID: 1188549890}
 --- !u!224 &388578070 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2342655697232598675, guid: d3014fa8f85bfc14e841805196d01f5e, type: 3}
@@ -4267,24 +4286,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3380814292968854083, guid: e6c7abc55ae090c4698251bcce1e3625, type: 3}
   m_PrefabInstance: {fileID: 3380814293301218026}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &472946860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 472946856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 589efacac274824489ab4f5dec891519, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemsBought: 0
-  interpolationPeriod: 0.1
-  CheckedBox:
-  - {fileID: 1110583106}
-  - {fileID: 1864113192}
-  - {fileID: 1188549890}
 --- !u!1 &473844473
 GameObject:
   m_ObjectHideFlags: 0
@@ -6140,7 +6141,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.43539038, g: 0.43539038, b: 0.43539038, a: 1}
+  m_Color: {r: 0.4302912, g: 0.4302912, b: 0.4302912, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -6197,7 +6198,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.08376963, y: 0.27498314, z: -0.95749056, w: 0.024057923}
+  m_LocalRotation: {x: 0.084293984, y: 0.2531849, z: -0.9634839, w: 0.022150824}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

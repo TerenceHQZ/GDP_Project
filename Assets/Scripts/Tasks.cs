@@ -27,7 +27,6 @@ public class Tasks : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        Debug.Log(time);
 
         if (time >= interpolationPeriod)
         {
@@ -50,8 +49,6 @@ public class Tasks : MonoBehaviour
     IEnumerator attendSchool()
     {
         yield return new WaitForSeconds(1f);
-
-        Debug.Log(School.wentToSchool);
         if (School.wentToSchool)
         {
             CheckedBox[2].SetActive(true);
