@@ -4,46 +4,13 @@ using UnityEngine;
 
 public class Tasks : MonoBehaviour
 {
-    public float itemsBought = 0f;
-
-    private float time = 0.0f;
-    public float interpolationPeriod = 0.1f;
-    public static int dailyMoneySpent = 0;
-    int jobsCompleted = 0;
-    public static Tasks Instance;
+    public static int dailyMoneySpent;
     public GameObject[] CheckedBox;
-
-    void Awake()
-    {
-        Instance = this;
-    }
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(attendSchool());
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        time += Time.deltaTime;
-
-        if (time >= interpolationPeriod)
-        {
-            time = 0.0f;
-
-            if(dailyMoneySpent <= 20)
-            {
-                //savingComplete();
-                //Debug.Log("You have saved less than $20 today.");
-            }
-            else
-            {
-                //Debug.Log("You have spent more than $20 in a day. Try to budget out your spenditure in a day.");
-            }
-            
-            dailyMoneySpent = 0; //reset the daily money spent every day
-        }
     }
 
     IEnumerator attendSchool()
@@ -66,30 +33,15 @@ public class Tasks : MonoBehaviour
         {
             CheckedBox[0].SetActive(false);
         }
-        StartCoroutine(attendSchool());
-    }
 
-     /*void jobTaskComplete()
-    {
-        if (jobsCompleted == 3)
+        if (dailyMoneySpent <= 100)
         {
-            Debug.Log("Great Job on completing 3 jobs. Continue to earn more money!");
+            CheckedBox[1].SetActive(true);
         }
         else
         {
-            Debug.Log("Completed" + jobsCompleted + "jobs");
+            CheckedBox[1].SetActive(false);
         }
-    }*/
-
-    void moneySpent()
-    {
-        dailyMoneySpent = 0;
-    }
-
-    
-    void buyShop(int price)
-    {
-        int x = price;
-        dailyMoneySpent += price;
+        StartCoroutine(attendSchool());
     }
 }
