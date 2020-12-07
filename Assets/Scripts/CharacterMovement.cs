@@ -5,6 +5,7 @@ public class CharacterMovement : MonoBehaviour
     public Joystick playerJoystick;
     public float movementSpeed;
     private Rigidbody rb;
+    public Vector3 clampPos;
 
     // Start is called before the first frame update
     void Start()
@@ -19,5 +20,18 @@ public class CharacterMovement : MonoBehaviour
         cameraDirection.y = 0.0f;
 
         rb.AddForce(cameraDirection * movementSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+
+        if (!GoToHome.atHome)
+        {
+            clampPos.x = Mathf.Clamp(transform.position.x, -12, 12);
+            clampPos.z = Mathf.Clamp(transform.position.z, -12, 12);
+            transform.position = clampPos;
+        }
+        else
+        {
+            clampPos.x = Mathf.Clamp(transform.position.x, 102.3f, 105.5f);
+            clampPos.z = Mathf.Clamp(transform.position.z, 10, 13.6f);
+            transform.position = clampPos;
+        }
     }
 }
