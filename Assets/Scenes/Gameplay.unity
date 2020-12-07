@@ -4214,7 +4214,7 @@ GameObject:
   - component: {fileID: 481703995}
   m_Layer: 0
   m_Name: employee
-  m_TagString: Untagged
+  m_TagString: FloatingIcon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5165,7 +5165,7 @@ GameObject:
   - component: {fileID: 658552625}
   m_Layer: 0
   m_Name: store icon
-  m_TagString: Untagged
+  m_TagString: FloatingIcon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5674,7 +5674,7 @@ GameObject:
   - component: {fileID: 692432204}
   m_Layer: 0
   m_Name: delivery
-  m_TagString: Untagged
+  m_TagString: FloatingIcon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5799,7 +5799,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.4674034, g: 0.4674034, b: 0.4674034, a: 1}
+  m_Color: {r: 0.42793578, g: 0.42793578, b: 0.42793578, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -5856,7 +5856,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.035711795, y: 0.9087282, z: -0.4081874, w: 0.07950347}
+  m_LocalRotation: {x: 0.021268632, y: 0.96607745, z: -0.24310142, w: 0.084520884}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -12276,7 +12276,7 @@ GameObject:
   - component: {fileID: 1828670424}
   m_Layer: 0
   m_Name: warehouse
-  m_TagString: Untagged
+  m_TagString: FloatingIcon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
