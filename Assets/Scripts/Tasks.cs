@@ -35,11 +35,11 @@ public class Tasks : MonoBehaviour
             if(dailyMoneySpent <= 20)
             {
                 //savingComplete();
-                Debug.Log("You have saved less than $20 today.");
+                //Debug.Log("You have saved less than $20 today.");
             }
             else
             {
-                Debug.Log("You have spent more than $20 in a day. Try to budget out your spenditure in a day.");
+                //Debug.Log("You have spent more than $20 in a day. Try to budget out your spenditure in a day.");
             }
             
             dailyMoneySpent = 0; //reset the daily money spent every day
@@ -56,6 +56,15 @@ public class Tasks : MonoBehaviour
         else
         {
             CheckedBox[2].SetActive(false);
+        }
+
+        if (JobManager.GetTaskDone() > 0)
+        {
+            CheckedBox[0].SetActive(true);
+        }
+        else
+        {
+            CheckedBox[0].SetActive(false);
         }
         StartCoroutine(attendSchool());
     }
