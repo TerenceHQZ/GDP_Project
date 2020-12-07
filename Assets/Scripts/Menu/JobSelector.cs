@@ -4,6 +4,8 @@ public class JobSelector : MonoBehaviour
 {
     public GameObject WarehouseSprite;
     public GameObject DeliverySprite;
+    public GameObject RetailSprite;
+    public GameObject FoodBeverageSprite;
 
     public void WarehouseJobSelect()
     {
@@ -40,6 +42,7 @@ public class JobSelector : MonoBehaviour
         if (JobManager.GetJob() == 0)
         {
             JobManager.SetJob(3);
+            FoodBeverageSprite.SetActive(true);
             Debug.Log("FoodBeverage selected");
         }
         else
@@ -54,6 +57,7 @@ public class JobSelector : MonoBehaviour
         if (JobManager.GetJob() == 0)
         {
             JobManager.SetJob(4);
+            RetailSprite.SetActive(true);
             Debug.Log("Retail selected");
         }
         else

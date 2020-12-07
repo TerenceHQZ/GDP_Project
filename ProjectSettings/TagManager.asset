@@ -8,6 +8,7 @@ TagManager:
   - Warehouse
   - DeliveryBuildings
   - StreetLight
+  - Office
   layers:
   - Default
   - TransparentFX

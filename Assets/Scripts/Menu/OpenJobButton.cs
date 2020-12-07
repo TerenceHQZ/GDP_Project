@@ -14,14 +14,14 @@ public class OpenJobButton : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.name == "typeMesh3")
+                if (hit.transform.name == "Office")
                 {
                     Vector3 buildingPos = hit.transform.position;
                     Vector3 characterPos = character.transform.position;
 
                     Debug.Log((buildingPos - characterPos).magnitude);
 
-                    if ((buildingPos - characterPos).magnitude <= 3f)
+                    if ((buildingPos - characterPos).magnitude <= 5f)
                     {
                         JobWindow.SetActive(true);
                     }

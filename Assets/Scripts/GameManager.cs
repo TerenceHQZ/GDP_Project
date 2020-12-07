@@ -97,6 +97,15 @@ public class GameManager : MonoBehaviour
         {
             SetMoney(GetMoney() + 1);
         }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            DayTimeManager.SetHour(DayTimeManager.GetHour() - 1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Y))
+        {
+            DayTimeManager.SetHour(DayTimeManager.GetHour() + 1);
+        }
     }
 
     IEnumerator ReduceHappiness()

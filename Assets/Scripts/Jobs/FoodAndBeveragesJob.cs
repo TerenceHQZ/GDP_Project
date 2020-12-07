@@ -2,15 +2,17 @@
 
 public class FoodAndBeveragesJob : MonoBehaviour
 {
-    public float taskCoolDown = 192f;
-    public static bool FoodBeverageTaskReady;
+    public float taskCoolDown = 45f;
+    public static bool foodBeverageTaskReady;
     private float timer;
 
     public GameObject character;
+    public GameObject floatingSprite;
 
     private void Start()
     {
         timer = PlayerPrefs.GetFloat("TaskCooldown", 0f);
+        Debug.Log("Warehouse cooldown: " + timer);
 
         if(timer > 0f)
         {
@@ -18,18 +20,34 @@ public class FoodAndBeveragesJob : MonoBehaviour
         }
         else
         {
-            FoodBeverageTaskReady = true;
-        }
+            foodBeverageTaskReady = true;
 
-        JobManager.SetJob(3);
+            if(JobManager.GetJob() == 3)
+                floatingSprite.SetActive(true);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        PlayerPrefs.SetFloat("TaskCooldown", timer);
     }
 
     private void Update()
     {
+        if (foodBeverageTaskReady && floatingSprite.activeSelf)
+        {
+            floatingSprite.transform.position = new Vector3(floatingSprite.transform.position.x,
+            floatingSprite.transform.position.y + (Mathf.Sin(Time.time) * 0.001f),
+            floatingSprite.transform.position.z);
 
-        Debug.Log(JobManager.GetJob());
+            floatingSprite.transform.Rotate(0, 0.25f, 0);
+        }
+        else if (!foodBeverageTaskReady && !floatingSprite.activeSelf && JobManager.GetJob() == 4 && timer <= 0f)
+        {
+            floatingSprite.SetActive(true);
+        }
 
-        if (Input.GetMouseButtonDown(0) && JobManager.GetJob() == 3 && FoodBeverageTaskReady)
+        if (Input.GetMouseButtonDown(0) && JobManager.GetJob() == 3 && foodBeverageTaskReady)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -51,11 +69,14 @@ public class FoodAndBeveragesJob : MonoBehaviour
 
                         JobManager.SetTaskDone(JobManager.GetTaskDone() + 1);
 
+                        Debug.Log(JobManager.GetTaskDone());
+
                         // HIDE PROMPTS UI ON THE WAREHOUSE BUILDING
+                        floatingSprite.SetActive(false);
 
                         Invoke("ResetCooldown", taskCoolDown);
 
-                        FoodBeverageTaskReady = false;
+                        foodBeverageTaskReady = false;
 
                         timer = taskCoolDown;
                     }
@@ -63,55 +84,28 @@ public class FoodAndBeveragesJob : MonoBehaviour
             }
         }
 
-        if (!FoodBeverageTaskReady && timer >= 0f)
+        if (!foodBeverageTaskReady && timer >= 0f)
         {
             timer -= Time.deltaTime;
         }
 
-        if (!FoodBeverageTaskReady && timer <= 0.5f)
+        if (!foodBeverageTaskReady && timer <= 0.5f)
         {
-            timer = 0f;
-            PlayerPrefs.SetFloat("TaskCooldown", 0f);
+            // ResetCooldown();
         }
     }
 
     private void ResetCooldown()
     {
-        FoodBeverageTaskReady = true;
+        foodBeverageTaskReady = true;
 
         timer = 0f;
         PlayerPrefs.SetFloat("TaskCooldown", 0f);
 
-        Debug.Log("Warehouse: Cooldown over");
-
         if (JobManager.GetJob() == 3)
         {
             // SHOW PROMPTS UI ON THE WAREHOUSE BUILDING
+            floatingSprite.SetActive(true);
         }
     }
-
-    /*
-    void OnCollisionEnter(Collision collision)
-    {
-        if(JobManager.playerJob == 1)
-        {
-            if (WarehouseTaskReady)
-            {
-                Debug.Log("Task completed");
-                GameManager.SetMoney(100);
-                WarehouseTaskReady = false;
-                Invoke("ResetCooldown", taskCoolDown);
-            }
-            else
-            {
-                Debug.Log("There is no task yet!");
-            }
-        }
-        else
-        {
-            Debug.Log("You do not have the warehouse job!");
-        }
-    }
-    */
 }
-

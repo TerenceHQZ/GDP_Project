@@ -2,15 +2,17 @@
 
 public class RetailJob : MonoBehaviour
 {
-    public float taskCoolDown = 192f;
-    public static bool retailJobTaskReady;
+    public float taskCoolDown = 45f;
+    public static bool retailTaskReady;
     private float timer;
 
     public GameObject character;
+    public GameObject floatingSprite;
 
     private void Start()
     {
         timer = PlayerPrefs.GetFloat("TaskCooldown", 0f);
+        Debug.Log("Warehouse cooldown: " + timer);
 
         if(timer > 0f)
         {
@@ -18,18 +20,34 @@ public class RetailJob : MonoBehaviour
         }
         else
         {
-            retailJobTaskReady = true;
-        }
+            retailTaskReady = true;
 
-        JobManager.SetJob(3);
+            if(JobManager.GetJob() == 4)
+                floatingSprite.SetActive(true);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        PlayerPrefs.SetFloat("TaskCooldown", timer);
     }
 
     private void Update()
     {
+        if (retailTaskReady && floatingSprite.activeSelf)
+        {
+            floatingSprite.transform.position = new Vector3(floatingSprite.transform.position.x,
+            floatingSprite.transform.position.y + (Mathf.Sin(Time.time) * 0.001f),
+            floatingSprite.transform.position.z);
 
-        Debug.Log(JobManager.GetJob());
+            floatingSprite.transform.Rotate(0, 0.25f, 0);
+        }
+        else if (!retailTaskReady && !floatingSprite.activeSelf && JobManager.GetJob() == 4 && timer <= 0f)
+        {
+            floatingSprite.SetActive(true);
+        }
 
-        if (Input.GetMouseButtonDown(0) && JobManager.GetJob() == 4 && retailJobTaskReady)
+        if (Input.GetMouseButtonDown(0) && JobManager.GetJob() == 4 && retailTaskReady)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -51,11 +69,14 @@ public class RetailJob : MonoBehaviour
 
                         JobManager.SetTaskDone(JobManager.GetTaskDone() + 1);
 
+                        Debug.Log(JobManager.GetTaskDone());
+
                         // HIDE PROMPTS UI ON THE WAREHOUSE BUILDING
+                        floatingSprite.SetActive(false);
 
                         Invoke("ResetCooldown", taskCoolDown);
 
-                        retailJobTaskReady = false;
+                        retailTaskReady = false;
 
                         timer = taskCoolDown;
                     }
@@ -63,55 +84,30 @@ public class RetailJob : MonoBehaviour
             }
         }
 
-        if (!retailJobTaskReady && timer >= 0f)
+        if (!retailTaskReady && timer >= 0f)
         {
             timer -= Time.deltaTime;
         }
 
-        if (!retailJobTaskReady && timer <= 0.5f)
+        if (!retailTaskReady && timer <= 0.5f)
         {
-            timer = 0f;
-            PlayerPrefs.SetFloat("TaskCooldown", 0f);
+            // ResetCooldown();
         }
     }
 
     private void ResetCooldown()
     {
-        retailJobTaskReady = true;
+        retailTaskReady = true;
 
         timer = 0f;
         PlayerPrefs.SetFloat("TaskCooldown", 0f);
 
-        Debug.Log("Warehouse: Cooldown over");
-
         if (JobManager.GetJob() == 4)
         {
             // SHOW PROMPTS UI ON THE WAREHOUSE BUILDING
+            floatingSprite.SetActive(true);
         }
     }
-
-    /*
-    void OnCollisionEnter(Collision collision)
-    {
-        if(JobManager.playerJob == 1)
-        {
-            if (WarehouseTaskReady)
-            {
-                Debug.Log("Task completed");
-                GameManager.SetMoney(100);
-                WarehouseTaskReady = false;
-                Invoke("ResetCooldown", taskCoolDown);
-            }
-            else
-            {
-                Debug.Log("There is no task yet!");
-            }
-        }
-        else
-        {
-            Debug.Log("You do not have the warehouse job!");
-        }
-    }
-    */
 }
+
 
