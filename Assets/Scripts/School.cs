@@ -11,7 +11,7 @@ public class School : MonoBehaviour
 
     void Update()
     {
-        if (!wentToSchool)
+        if (!wentToSchool && DayTimeManager.GetHour() <= 12)
         {
             floatingSprite.SetActive(true);
             floatingSprite.transform.position = new Vector3(floatingSprite.transform.position.x,
