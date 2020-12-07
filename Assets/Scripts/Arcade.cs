@@ -21,15 +21,18 @@ public class Arcade : MonoBehaviour
 
                     Debug.Log((buildingPos - characterPos).magnitude);
 
-                    if ((buildingPos - characterPos).magnitude <= 2.25f)
+                    if ((buildingPos - characterPos).magnitude <= 3f)
                     {
                         UseArcade();
                     }
                 }
             }
         }
+    }
 
-        void UseArcade()
+    void UseArcade()
+    {
+        if (GameManager.GetMoney() >= arcadeCost)
         {
             GameManager.SetMoney(GameManager.GetMoney() - arcadeCost);
 
