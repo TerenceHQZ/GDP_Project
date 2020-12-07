@@ -30,18 +30,6 @@ public class DayTimeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetInt("AccountExist") == 0)
-        {
-            SetDay(startingDay);
-            SetHour(startingHour);
-            SetMinute(startingMinute);
-        }
-        else
-        {
-            SetDay(PlayerPrefs.GetInt("Day"));
-            SetHour(PlayerPrefs.GetInt("Hours"));
-            SetMinute(PlayerPrefs.GetInt("Minutes"));
-        }
         Instance.dayTimeText.text = "Day: " + GetDay() + " | " + GetHour().ToString("D2") + ":" + GetMinute().ToString("D2");
 
         StartCoroutine(AddMinutes());
@@ -101,7 +89,6 @@ public class DayTimeManager : MonoBehaviour
             SetDay(GetDay() + 1);
 
             GameManager.SetMoney(GameManager.GetMoney() + (JobManager.GetTaskDone() * taskBaseMoney));
-            //GameManager.SetHappiness(GameManager.GetHappiness() + JobManager.happinessLossBase);
             JobManager.SetJob(0);
             JobManager.SetTaskDone(0);
 

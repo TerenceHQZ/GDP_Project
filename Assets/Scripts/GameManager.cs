@@ -34,6 +34,10 @@ public class GameManager : MonoBehaviour
             SetMoney(startingMoney);
             SetFoodBought(0);
 
+            DayTimeManager.SetDay(1);
+            DayTimeManager.SetHour(7);
+            DayTimeManager.SetMinute(0);
+
             JobManager.SetJob(0);
             JobManager.SetTaskDone(0);
 
@@ -50,6 +54,10 @@ public class GameManager : MonoBehaviour
             SetHappiness(PlayerPrefs.GetInt("PlayerHappiness"));
             SetMoney(PlayerPrefs.GetInt("PlayerMoney"));
             SetFoodBought(PlayerPrefs.GetInt("FoodBought"));
+
+            DayTimeManager.SetDay(PlayerPrefs.GetInt("Day", 1));
+            DayTimeManager.SetHour(PlayerPrefs.GetInt("Hours", 7));
+            DayTimeManager.SetMinute(PlayerPrefs.GetInt("Minutes", 0));
 
             JobManager.SetJob(PlayerPrefs.GetInt("PlayerJob"));
             JobManager.SetTaskDone(PlayerPrefs.GetInt("TasksDone"));
