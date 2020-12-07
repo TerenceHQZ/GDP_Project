@@ -9,6 +9,7 @@ TagManager:
   - DeliveryBuildings
   - StreetLight
   - Office
+  - FloatingIcon
   layers:
   - Default
   - TransparentFX

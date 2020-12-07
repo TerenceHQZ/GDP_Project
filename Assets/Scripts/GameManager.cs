@@ -55,8 +55,6 @@ public class GameManager : MonoBehaviour
             JobManager.SetTaskDone(PlayerPrefs.GetInt("TasksDone"));
         }
 
-        SetHappiness(5);
-
         moneyText.text = "$" + playerMoney;
         happinessText.text = playerHappiness + "/100";
 

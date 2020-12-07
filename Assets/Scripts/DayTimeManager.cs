@@ -99,7 +99,7 @@ public class DayTimeManager : MonoBehaviour
             SetDay(GetDay() + 1);
 
             GameManager.SetMoney(GameManager.GetMoney() + (JobManager.GetTaskDone() * taskBaseMoney));
-            GameManager.SetHappiness(GameManager.GetHappiness() + JobManager.happinessLossBase);
+            //GameManager.SetHappiness(GameManager.GetHappiness() + JobManager.happinessLossBase);
             JobManager.SetJob(0);
             JobManager.SetTaskDone(0);
 
@@ -109,6 +109,13 @@ public class DayTimeManager : MonoBehaviour
                 Debug.Log("Did not go to school");
             }
             School.wentToSchool = false;
+
+            GameObject[] floatingIcon = GameObject.FindGameObjectsWithTag("FloatingIcon");
+
+            for (int i = 0; i < floatingIcon.Length; i++)
+            {
+                floatingIcon[i].SetActive(false);
+            }
         }
         
         PlayerPrefs.SetInt("Hours", hours);
