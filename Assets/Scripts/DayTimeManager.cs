@@ -62,7 +62,8 @@ public class DayTimeManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        SetMinute(GetMinute() + 1);
+        if (Tutorial.tutorialProgress >= 7)
+            SetMinute(GetMinute() + 1);
 
         yield return StartCoroutine(AddMinutes());
     }

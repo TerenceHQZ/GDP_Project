@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class RetailJob : MonoBehaviour
 {
@@ -8,11 +9,12 @@ public class RetailJob : MonoBehaviour
 
     public GameObject character;
     public GameObject floatingSprite;
+    public TextMeshProUGUI UIPrompt;
 
     private void Start()
     {
         timer = PlayerPrefs.GetFloat("TaskCooldown", 0f);
-        Debug.Log("Warehouse cooldown: " + timer);
+        Debug.Log("Retail cooldown: " + timer);
 
         if(timer > 0f)
         {
@@ -25,11 +27,6 @@ public class RetailJob : MonoBehaviour
             if(JobManager.GetJob() == 4)
                 floatingSprite.SetActive(true);
         }
-    }
-
-    private void OnDestroy()
-    {
-        PlayerPrefs.SetFloat("TaskCooldown", timer);
     }
 
     private void Update()
@@ -74,6 +71,12 @@ public class RetailJob : MonoBehaviour
                         // HIDE PROMPTS UI ON THE WAREHOUSE BUILDING
                         floatingSprite.SetActive(false);
 
+                        UIPrompt.text = "Task completed.\nTotal tasks done for the day: " + JobManager.GetTaskDone();
+
+                        UIPrompt.gameObject.SetActive(true);
+
+                        Invoke("HideUIPrompt", 3f);
+
                         Invoke("ResetCooldown", taskCoolDown);
 
                         retailTaskReady = false;
@@ -87,12 +90,18 @@ public class RetailJob : MonoBehaviour
         if (!retailTaskReady && timer >= 0f)
         {
             timer -= Time.deltaTime;
+            PlayerPrefs.SetFloat("TaskCooldown", timer);
         }
 
         if (!retailTaskReady && timer <= 0.5f)
         {
             // ResetCooldown();
         }
+    }
+
+    void HideUIPrompt()
+    {
+        UIPrompt.gameObject.SetActive(false);
     }
 
     private void ResetCooldown()

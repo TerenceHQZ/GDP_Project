@@ -1,14 +1,16 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class DeliveryJob : MonoBehaviour
 {
-    public float taskCoolDown = 60f;
+    public float taskCoolDown = 45f;
     public static bool DeliveryTaskReady;
     private float timer;
     private int randomBuilding;
 
     public GameObject character;
     public GameObject floatingSprite;
+    public TextMeshProUGUI UIPrompt;
 
     public GameObject[] DeliveryBuildings;
     public GameObject[] floatingDeliverSprite;
@@ -32,11 +34,6 @@ public class DeliveryJob : MonoBehaviour
         }
 
         //JobManager.SetJob(2);
-    }
-
-    private void OnDestroy()
-    {
-        PlayerPrefs.SetFloat("TaskCooldown", timer);
     }
 
     private void Update()
@@ -119,6 +116,12 @@ public class DeliveryJob : MonoBehaviour
 
                         JobManager.SetTaskDone(JobManager.GetTaskDone() + 1);
 
+                        UIPrompt.text = "Task completed.\nTotal tasks done for the day: " + JobManager.GetTaskDone();
+
+                        UIPrompt.gameObject.SetActive(true);
+
+                        Invoke("HideUIPrompt", 3f);
+
                         Invoke("ResetCooldown", taskCoolDown);
 
                         DeliveryTaskReady = false;
@@ -140,6 +143,12 @@ public class DeliveryJob : MonoBehaviour
                         GameManager.SetHappiness(GameManager.GetHappiness() - JobManager.happinessLossPerTask);
 
                         JobManager.SetTaskDone(JobManager.GetTaskDone() + 1);
+
+                        UIPrompt.text = "Task completed.\nTotal tasks done for the day: " + JobManager.GetTaskDone();
+
+                        UIPrompt.gameObject.SetActive(true);
+
+                        Invoke("HideUIPrompt", 3f);
 
                         Invoke("ResetCooldown", taskCoolDown);
 
@@ -163,6 +172,12 @@ public class DeliveryJob : MonoBehaviour
 
                         JobManager.SetTaskDone(JobManager.GetTaskDone() + 1);
 
+                        UIPrompt.text = "Task completed.\nTotal tasks done for the day: " + JobManager.GetTaskDone();
+
+                        UIPrompt.gameObject.SetActive(true);
+
+                        Invoke("HideUIPrompt", 3f);
+
                         Invoke("ResetCooldown", taskCoolDown);
 
                         DeliveryTaskReady = false;
@@ -176,6 +191,7 @@ public class DeliveryJob : MonoBehaviour
         if (!DeliveryTaskReady && timer >= 0f)
         {
             timer -= Time.deltaTime;
+            PlayerPrefs.SetFloat("TaskCooldown", timer);
         }
 
         if (!DeliveryTaskReady && timer <= 0.5f)
@@ -183,6 +199,11 @@ public class DeliveryJob : MonoBehaviour
             timer = 0f;
             PlayerPrefs.SetFloat("TaskCooldown", 0f);
         }
+    }
+
+    void HideUIPrompt()
+    {
+        UIPrompt.gameObject.SetActive(false);
     }
 
     private void ResetCooldown()

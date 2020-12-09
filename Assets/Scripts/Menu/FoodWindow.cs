@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class FoodWindow : MonoBehaviour
 {
@@ -6,17 +7,25 @@ public class FoodWindow : MonoBehaviour
     public int FastFoodCost = 50;
     public int RestaurantCost = 100;
 
+    public TextMeshProUGUI UIPrompt;
+
     public void Hawker()
     {
         if(GameManager.GetMoney() >= HawkerCost)
         {
             GameManager.SetMoney(GameManager.GetMoney() - HawkerCost);
             Tasks.dailyMoneySpent += HawkerCost;
+
+            UIPrompt.text = "John bought hawker food for $20.";
         }
         else
         {
-            // NOT ENOUGH MONEY
+            UIPrompt.text = "John does not have enough money.";
         }
+
+        UIPrompt.gameObject.SetActive(true);
+
+        Invoke("HideUIPrompt", 3f);
     }
 
     public void FastFood()
@@ -26,11 +35,17 @@ public class FoodWindow : MonoBehaviour
             GameManager.SetMoney(GameManager.GetMoney() - FastFoodCost);
             GameManager.SetHappiness(GameManager.GetHappiness() + 5);
             Tasks.dailyMoneySpent += FastFoodCost;
+
+            UIPrompt.text = "John bought fast food for $50. (Happiness +5)";
         }
         else
         {
-            // NOT ENOUGH MONEY
+            UIPrompt.text = "John does not have enough money.";
         }
+
+        UIPrompt.gameObject.SetActive(true);
+
+        Invoke("HideUIPrompt", 3f);
     }
 
     public void Restaurant()
@@ -38,12 +53,23 @@ public class FoodWindow : MonoBehaviour
         if (GameManager.GetMoney() >= RestaurantCost)
         {
             GameManager.SetMoney(GameManager.GetMoney() - RestaurantCost);
-            GameManager.SetHappiness(GameManager.GetHappiness() + 10);
+            GameManager.SetHappiness(GameManager.GetHappiness() + 12);
             Tasks.dailyMoneySpent += RestaurantCost;
+
+            UIPrompt.text = "John bought fast food for $100. (Happiness +12)";
         }
         else
         {
-            // NOT ENOUGH MONEY
+            UIPrompt.text = "John does not have enough money.";
         }
+
+        UIPrompt.gameObject.SetActive(true);
+
+        Invoke("HideUIPrompt", 3f);
+    }
+
+    void HideUIPrompt()
+    {
+        UIPrompt.gameObject.SetActive(false);
     }
 }

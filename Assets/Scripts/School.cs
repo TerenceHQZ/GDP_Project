@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class School : MonoBehaviour
 {
     public GameObject character;
     public GameObject schoolFade;
     public GameObject floatingSprite;
+    public TextMeshProUGUI UIPrompt;
     public static int loseHappinessAmount = 20;
     public static bool wentToSchool = false;
 
@@ -42,13 +44,22 @@ public class School : MonoBehaviour
                     {
                         if ((DayTimeManager.GetHour() <= 8 && DayTimeManager.GetMinute() <= 59) && !wentToSchool)
                         {
-                            
+                            UIPrompt.text = "John went to school at " + DayTimeManager.GetHour().ToString("D2")
+                                + ":" + DayTimeManager.GetMinute().ToString("D2") + ".";
+
+                            UIPrompt.gameObject.SetActive(true);
+
                             StartCoroutine(SchoolFade());
                             StartCoroutine(GoToSchool());
+                            
                         }
                         else if ((DayTimeManager.GetHour() >= 9 && DayTimeManager.GetHour() <= 12) && !wentToSchool)
                         {
-                            Debug.Log("u r late for school");
+                            UIPrompt.text = "John went to school at" + DayTimeManager.GetHour()
+                                + ":" + DayTimeManager.GetMinute()
+                                + ".\nHe was late... (-10 happiness).";
+
+                            UIPrompt.gameObject.SetActive(true);
 
                             GameManager.SetHappiness(GameManager.GetHappiness() - 10);
 
@@ -76,5 +87,6 @@ public class School : MonoBehaviour
         schoolFade.SetActive(true);
         yield return new WaitForSeconds(3f);
         schoolFade.SetActive(false);
+        UIPrompt.gameObject.SetActive(false);
     }
 }

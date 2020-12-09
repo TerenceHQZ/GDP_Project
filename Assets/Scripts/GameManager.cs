@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("OwnedBed", 0);
 
             PlayerPrefs.SetFloat("TaskCooldown", 0f);
+
+            Tutorial.SetTutorialProgress(0);
         }
         else
         {
@@ -72,8 +74,8 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         /*
-         Game testing purposes
-         */
+        Game testing purposes
+        */
         if (Input.GetKeyDown(KeyCode.Space))
         {
             PlayerPrefs.SetInt("AccountExist", 1);

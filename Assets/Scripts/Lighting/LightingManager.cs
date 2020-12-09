@@ -41,25 +41,28 @@ public class LightingManager : MonoBehaviour
         if (Preset == null)
             yield return null;
 
-        if (Application.isPlaying)
+        if (Tutorial.tutorialProgress >= 7)
         {
-            TimeOfDay += UpdateAmount;
-
-            if (DayTimeManager.GetHour() >= 22 && DayTimeManager.GetMinute() >= 59)
+            if (Application.isPlaying)
             {
-                yield return new WaitForSeconds(0.95f);
-                TimeOfDay = 7f;
+                TimeOfDay += UpdateAmount;
+
+                if (DayTimeManager.GetHour() >= 22 && DayTimeManager.GetMinute() >= 59)
+                {
+                    yield return new WaitForSeconds(0.95f);
+                    TimeOfDay = 7f;
+                }
+
+                PlayerPrefs.SetFloat("LightingTime", TimeOfDay);
+
+                TimeOfDay %= 24;
+
+                UpdateLighting(TimeOfDay / 24);
             }
-
-            PlayerPrefs.SetFloat("LightingTime", TimeOfDay);
-
-            TimeOfDay %= 24;
-
-            UpdateLighting(TimeOfDay / 24);
-        }
-        else
-        {
-            UpdateLighting(TimeOfDay / 24);
+            else
+            {
+                UpdateLighting(TimeOfDay / 24);
+            }
         }
 
         yield return StartCoroutine(ChangeLighting());

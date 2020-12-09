@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class Arcade : MonoBehaviour
 {
     public int arcadeCost;
     public GameObject character;
     public GameObject floatingSprite;
+    public TextMeshProUGUI UIPrompt;
 
     void Update()
     {
@@ -44,6 +46,25 @@ public class Arcade : MonoBehaviour
             GameManager.SetMoney(GameManager.GetMoney() - arcadeCost);
 
             GameManager.SetHappiness(GameManager.GetHappiness() + 5);
+
+            UIPrompt.text = "John played the arcade for $60. (Happiness +5)";
+
+            UIPrompt.gameObject.SetActive(true);
+
+            Invoke("HideUIPrompt", 3f);
         }
+        else
+        {
+            UIPrompt.text = "John does not have enough money.";
+
+            UIPrompt.gameObject.SetActive(true);
+
+            Invoke("HideUIPrompt", 3f);
+        }
+    }
+
+    void HideUIPrompt()
+    {
+        UIPrompt.gameObject.SetActive(false);
     }
 }
