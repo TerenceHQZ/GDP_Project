@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1649622577}
     m_Modifications:
+    - target: {fileID: 2488384842162462300, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8474520933863104863, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
       propertyPath: m_Name
       value: Street Light (3)
@@ -2759,6 +2763,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1649622577}
     m_Modifications:
+    - target: {fileID: 2488384842162462300, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8474520933863104863, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
       propertyPath: m_Name
       value: Street Light (5)
@@ -2923,6 +2931,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1649622577}
     m_Modifications:
+    - target: {fileID: 2488384842162462300, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8474520933863104863, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
       propertyPath: m_Name
       value: Street Light (11)
@@ -3451,7 +3463,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -7922,6 +7934,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1649622577}
     m_Modifications:
+    - target: {fileID: 2488384842162462300, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8474520933863104863, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
       propertyPath: m_Name
       value: Street Light
@@ -8873,7 +8889,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.4302885, g: 0.4302885, b: 0.4302885, a: 1}
+  m_Color: {r: 0.40779048, g: 0.40779048, b: 0.40779048, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -8908,7 +8924,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -8930,7 +8946,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.022152487, y: 0.963479, z: -0.2532039, w: 0.084293544}
+  m_LocalRotation: {x: 0.013615226, y: 0.9839642, z: -0.15562265, w: 0.086085774}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -9589,6 +9605,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1649622577}
     m_Modifications:
+    - target: {fileID: 2488384842162462300, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8474520933863104863, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
       propertyPath: m_Name
       value: Street Light (8)
@@ -9935,6 +9955,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1649622577}
     m_Modifications:
+    - target: {fileID: 2488384842162462300, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8474520933863104863, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
       propertyPath: m_Name
       value: Street Light (10)
@@ -11832,6 +11856,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1649622577}
     m_Modifications:
+    - target: {fileID: 2488384842162462300, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8474520933863104863, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
       propertyPath: m_Name
       value: Street Light (4)
@@ -12134,6 +12162,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1649622577}
     m_Modifications:
+    - target: {fileID: 2488384842162462300, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8474520933863104863, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
       propertyPath: m_Name
       value: Street Light (7)
@@ -12674,7 +12706,7 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -12696,6 +12728,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1649622577}
     m_Modifications:
+    - target: {fileID: 2488384842162462300, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8474520933863104863, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
       propertyPath: m_Name
       value: Street Light (2)
@@ -14192,6 +14228,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1649622577}
     m_Modifications:
+    - target: {fileID: 2488384842162462300, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8474520933863104863, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
       propertyPath: m_Name
       value: Street Light (6)
@@ -14329,6 +14369,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1649622577}
     m_Modifications:
+    - target: {fileID: 2488384842162462300, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8474520933863104863, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
       propertyPath: m_Name
       value: Street Light (9)
@@ -16646,6 +16690,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1649622577}
     m_Modifications:
+    - target: {fileID: 2488384842162462300, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8474520933863104863, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
       propertyPath: m_Name
       value: Street Light (12)
@@ -19479,6 +19527,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1649622577}
     m_Modifications:
+    - target: {fileID: 2488384842162462300, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8474520933863104863, guid: ffaf4d967ca7c8b45b81d96722e020c1, type: 3}
       propertyPath: m_Name
       value: Street Light (1)
