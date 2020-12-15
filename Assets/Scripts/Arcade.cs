@@ -1,4 +1,5 @@
 ﻿using TMPro;
+using System.Collections;
 using UnityEngine;
 
 public class Arcade : MonoBehaviour
@@ -6,6 +7,7 @@ public class Arcade : MonoBehaviour
     public int arcadeCost;
     public GameObject character;
     public GameObject floatingSprite;
+    public Transform fadeAnimation;
     public TextMeshProUGUI UIPrompt;
 
     void Update()
@@ -66,5 +68,14 @@ public class Arcade : MonoBehaviour
     void HideUIPrompt()
     {
         UIPrompt.gameObject.SetActive(false);
+    }
+
+    IEnumerator GoToArcade()
+    {
+        fadeAnimation.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+
+        
     }
 }

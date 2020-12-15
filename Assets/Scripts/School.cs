@@ -77,9 +77,9 @@ public class School : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         wentToSchool = true;
-        DayTimeManager.SetHour(15);
+        DayTimeManager.SetHour(17);
         DayTimeManager.SetMinute(0);
-        LightingManager.SetLightingTime(15);
+        LightingManager.SetLightingTime(17);
     }
 
     IEnumerator SchoolFade()
