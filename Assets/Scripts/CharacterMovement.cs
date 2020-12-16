@@ -13,6 +13,12 @@ public class CharacterMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    void Update()
+    {
+        if (!playerJoystick)
+            playerJoystick = GameObject.Find("Fixed Joystick").GetComponent<FixedJoystick>();
+    }
+
     public void FixedUpdate()
     {
         Vector3 cameraDirection = new Vector3(playerJoystick.Horizontal, 0f, playerJoystick.Vertical);
@@ -32,7 +38,7 @@ public class CharacterMovement : MonoBehaviour
         {
             if (ArcadeManager.arcadeManager.atArcade)
             {
-                clampPos.x = Mathf.Clamp(transform.position.x, -1.549f, 1.4f);
+                clampPos.x = Mathf.Clamp(transform.position.x, -1.4f, 1.4f);
                 clampPos.z = Mathf.Clamp(transform.position.z, -1.54f, 1.4f);
                 transform.position = clampPos;
                 return;

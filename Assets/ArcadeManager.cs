@@ -7,7 +7,8 @@ using UnityEngine;
 public class ArcadeManager : MonoBehaviour
 {
     public bool atArcade;
-    public float happinessGained;
+    public int arcadeCost;
+    public int happinessGained;
     public float time;
     public Animator fadeAnim;
     public TextMeshProUGUI timer, happiness;
@@ -48,9 +49,11 @@ public class ArcadeManager : MonoBehaviour
 
     IEnumerator GoBackToMain()
     {
-        fadeAnim.SetTrigger("timer");
+        fadeAnim.SetTrigger("fadeOut");
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene("Gameplay");
+        GameManager.SetHappiness(GameManager.GetHappiness() + happinessGained);
+        DayTimeManager.SetMinute(DayTimeManager.GetMinute() + 30);
         Destroy(gameObject);
     }
 }

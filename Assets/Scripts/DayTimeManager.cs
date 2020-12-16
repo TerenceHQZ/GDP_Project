@@ -12,7 +12,7 @@ public class DayTimeManager : MonoBehaviour
     public int startingHour = 7;
     public int startingMinute = 0;
 
-    public static int taskBaseMoney = 15;
+    public static int taskBaseMoney = 3;
 
     public TextMeshProUGUI dayTimeText;
 
@@ -120,7 +120,7 @@ public class DayTimeManager : MonoBehaviour
 
         if (minutes >= 60f)
         {
-            SetMinute(0);
+            SetMinute(minutes - 60);
             SetHour(GetHour() + 1);
         }
 

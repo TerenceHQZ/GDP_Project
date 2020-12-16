@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ArcadeGame : MonoBehaviour
@@ -7,9 +8,10 @@ public class ArcadeGame : MonoBehaviour
     public bool playedGame;
     public float timer;
     public float rotateSpeed;
-    public float happinessGained;
+    public int happinessGained;
     public float tapRange;
     public Transform sprite;
+    public Transform text;
     Transform player;
 
     void Start()
@@ -38,6 +40,9 @@ public class ArcadeGame : MonoBehaviour
 
         else
             sprite.Rotate(0, rotateSpeed * Time.deltaTime, 0);
+
+        if (text.gameObject.activeInHierarchy)
+            text.position = new Vector3(text.position.x, text.transform.position.y + 0.2f * (Time.deltaTime), text.position.z);
     }
 
     void PlayGame()
@@ -47,15 +52,24 @@ public class ArcadeGame : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log((hit.transform.position - player.position).magnitude < tapRange);
-
             if (hit.transform == sprite && !playedGame && (hit.transform.position - player.position).magnitude < tapRange)
             {
-                Debug.Log((hit.transform.position - player.position).magnitude);
                 playedGame = true;
                 sprite.gameObject.SetActive(false);
+                happinessGained = (Random.Range(1, 4) == 3 ? 2 : 1);
+                StartCoroutine(DisplayText());
                 ArcadeManager.arcadeManager.happinessGained += happinessGained;
             }
         }
+    }
+
+    IEnumerator DisplayText()
+    {
+        Vector3 textOriginalPos = text.position;
+        text.gameObject.SetActive(true);
+        text.GetComponent<TextMesh>().text = "Happiness + " + happinessGained.ToString();
+        yield return new WaitForSeconds(1f);
+        text.position = textOriginalPos;
+        text.gameObject.SetActive(false);
     }
 }

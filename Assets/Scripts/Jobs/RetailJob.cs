@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class RetailJob : MonoBehaviour
 {
-    public float taskCoolDown = 45f;
+    public float taskCoolDown;
     public static bool retailTaskReady;
     private float timer;
 
