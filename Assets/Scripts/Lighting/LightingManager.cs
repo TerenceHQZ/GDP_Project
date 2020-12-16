@@ -41,7 +41,7 @@ public class LightingManager : MonoBehaviour
         if (Preset == null)
             yield return null;
 
-        if (Tutorial.tutorialProgress >= 7)
+        if (Tutorial.tutorialProgress >= 8)
         {
             if (Application.isPlaying)
             {

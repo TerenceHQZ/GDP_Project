@@ -62,7 +62,7 @@ public class DayTimeManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        if (Tutorial.tutorialProgress >= 7)
+        if (Tutorial.tutorialProgress >= 8)
             SetMinute(GetMinute() + 1);
 
         yield return StartCoroutine(AddMinutes());
@@ -99,6 +99,14 @@ public class DayTimeManager : MonoBehaviour
                 Debug.Log("Did not go to school");
             }
             School.wentToSchool = false;
+
+            if (GameManager.GetFoodBought() < 2)
+            {
+                GameManager.SetHappiness(GameManager.GetHappiness() - 15);
+                Debug.Log("Did not buy 2x food");
+            }
+
+            GameManager.SetFoodBought(0);
 
             GameObject[] floatingIcon = GameObject.FindGameObjectsWithTag("FloatingIcon");
 

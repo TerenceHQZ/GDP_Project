@@ -10,10 +10,10 @@ public class Tasks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(attendSchool());
+        StartCoroutine(checkTasks());
     }
 
-    IEnumerator attendSchool()
+    IEnumerator checkTasks()
     {
         yield return new WaitForSeconds(1f);
         if (School.wentToSchool)
@@ -42,6 +42,16 @@ public class Tasks : MonoBehaviour
         {
             CheckedBox[1].SetActive(false);
         }
-        StartCoroutine(attendSchool());
+
+        if (GameManager.GetFoodBought() >= 2)
+        {
+            CheckedBox[3].SetActive(true);
+        }
+        else
+        {
+            CheckedBox[3].SetActive(false);
+        }
+
+        StartCoroutine(checkTasks());
     }
 }

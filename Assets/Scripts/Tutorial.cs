@@ -13,6 +13,10 @@ public class Tutorial : MonoBehaviour
     public GameObject UIP3Text;
     public GameObject rulesP1Text;
     public GameObject rulesP2Text;
+    public GameObject slideScreenToRotate;
+    public GameObject slideIcon;
+
+    private bool iconMovement;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +50,10 @@ public class Tutorial : MonoBehaviour
         else if (tutorialProgress == 6)
         {
             rulesP2Text.SetActive(true);
+        }
+        else if (tutorialProgress == 7)
+        {
+            slideScreenToRotate.SetActive(true);
         }
     }
 
@@ -93,6 +101,44 @@ public class Tutorial : MonoBehaviour
             {
                 SetTutorialProgress(7);
                 rulesP2Text.SetActive(false);
+                slideScreenToRotate.SetActive(true);
+
+                slideIcon.transform.TransformDirection(new Vector3(1.5f,
+                    slideIcon.transform.localPosition.y,
+                    slideIcon.transform.localPosition.z));
+            }
+            else if (GetTutorialProgress() == 7)
+            {
+                SetTutorialProgress(8);
+                slideScreenToRotate.SetActive(false);
+            }
+        }
+
+        if (GetTutorialProgress() == 7)
+        {
+            Debug.Log(slideIcon.transform.position.x);
+            if (slideIcon.transform.position.x <= 1150f)
+            {
+                iconMovement = true;
+            }
+            else if (slideIcon.transform.position.x >= 1950f)
+            {
+                iconMovement = false;
+            }
+
+            if (iconMovement)
+            {
+                slideIcon.transform.position = new Vector3(
+                slideIcon.transform.position.x + (Time.deltaTime * 500),
+                slideIcon.transform.position.y,
+                slideIcon.transform.position.z);
+            }
+            else
+            {
+                slideIcon.transform.position = new Vector3(
+                slideIcon.transform.position.x - (Time.deltaTime * 500),
+                slideIcon.transform.position.y,
+                slideIcon.transform.position.z);
             }
         }
 
