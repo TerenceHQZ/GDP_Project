@@ -56,7 +56,10 @@ public class FoodWindow : MonoBehaviour
         {
             GameManager.SetMoney(GameManager.GetMoney() - RestaurantCost);
             GameManager.SetHappiness(GameManager.GetHappiness() + 12);
+<<<<<<< HEAD
             GameManager.SetFoodBought(GameManager.GetFoodBought() + 1);
+=======
+>>>>>>> parent of b8bad14... -
             Tasks.dailyMoneySpent += RestaurantCost;
 
             UIPrompt.text = "John bought fast food for $100. (Happiness +12)";
