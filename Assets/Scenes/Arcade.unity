@@ -851,9 +851,9 @@ RectTransform:
   m_Father: {fileID: 400142870}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1795, y: 1022}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -100, y: -50}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1169585465
@@ -1346,6 +1346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atArcade: 0
+  arcadeCost: 0
   happinessGained: 0
   time: 30
   fadeAnim: {fileID: 1416594703}
