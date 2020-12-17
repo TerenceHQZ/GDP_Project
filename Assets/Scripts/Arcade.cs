@@ -1,11 +1,14 @@
 ﻿using TMPro;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Arcade : MonoBehaviour
 {
     public int arcadeCost;
     public GameObject character;
     public GameObject floatingSprite;
+    public Animator fadeAnim;
     public TextMeshProUGUI UIPrompt;
 
     void Update()
@@ -28,8 +31,6 @@ public class Arcade : MonoBehaviour
                     Vector3 buildingPos = hit.transform.position;
                     Vector3 characterPos = character.transform.position;
 
-                    Debug.Log((buildingPos - characterPos).magnitude);
-
                     if ((buildingPos - characterPos).magnitude <= 3f)
                     {
                         UseArcade();
@@ -45,9 +46,9 @@ public class Arcade : MonoBehaviour
         {
             GameManager.SetMoney(GameManager.GetMoney() - arcadeCost);
 
-            GameManager.SetHappiness(GameManager.GetHappiness() + 5);
+            UIPrompt.text = "John played the arcade for $60.";
 
-            UIPrompt.text = "John played the arcade for $60. (Happiness +5)";
+            StartCoroutine(GoToArcade());
 
             UIPrompt.gameObject.SetActive(true);
 
@@ -66,5 +67,14 @@ public class Arcade : MonoBehaviour
     void HideUIPrompt()
     {
         UIPrompt.gameObject.SetActive(false);
+    }
+
+    IEnumerator GoToArcade()
+    {
+        fadeAnim.SetTrigger("fadeOut");
+
+        yield return new WaitForSeconds(1f);
+
+        SceneManager.LoadScene("Arcade");
     }
 }

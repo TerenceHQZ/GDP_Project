@@ -14,6 +14,7 @@ public class FoodWindow : MonoBehaviour
         if(GameManager.GetMoney() >= HawkerCost)
         {
             GameManager.SetMoney(GameManager.GetMoney() - HawkerCost);
+            GameManager.SetFoodBought(GameManager.GetFoodBought() + 1);
             Tasks.dailyMoneySpent += HawkerCost;
 
             UIPrompt.text = "John bought hawker food for $20.";
@@ -34,6 +35,7 @@ public class FoodWindow : MonoBehaviour
         {
             GameManager.SetMoney(GameManager.GetMoney() - FastFoodCost);
             GameManager.SetHappiness(GameManager.GetHappiness() + 5);
+            GameManager.SetFoodBought(GameManager.GetFoodBought() + 1);
             Tasks.dailyMoneySpent += FastFoodCost;
 
             UIPrompt.text = "John bought fast food for $50. (Happiness +5)";
@@ -53,11 +55,8 @@ public class FoodWindow : MonoBehaviour
         if (GameManager.GetMoney() >= RestaurantCost)
         {
             GameManager.SetMoney(GameManager.GetMoney() - RestaurantCost);
-<<<<<<< Updated upstream
             GameManager.SetHappiness(GameManager.GetHappiness() + 12);
-=======
-            GameManager.SetHappiness(GameManager.GetHappiness() + 15);
->>>>>>> Stashed changes
+            GameManager.SetFoodBought(GameManager.GetFoodBought() + 1);
             Tasks.dailyMoneySpent += RestaurantCost;
 
             UIPrompt.text = "John bought fast food for $100. (Happiness +12)";

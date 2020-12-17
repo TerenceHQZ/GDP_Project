@@ -12,7 +12,7 @@ public class DayTimeManager : MonoBehaviour
     public int startingHour = 7;
     public int startingMinute = 0;
 
-    public static int taskBaseMoney = 15;
+    public static int taskBaseMoney = 3;
 
     public TextMeshProUGUI dayTimeText;
 
@@ -62,7 +62,7 @@ public class DayTimeManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        if (Tutorial.tutorialProgress >= 7)
+        if (Tutorial.tutorialProgress >= 8)
             SetMinute(GetMinute() + 1);
 
         yield return StartCoroutine(AddMinutes());
@@ -100,6 +100,14 @@ public class DayTimeManager : MonoBehaviour
             }
             School.wentToSchool = false;
 
+            if (GameManager.GetFoodBought() < 2)
+            {
+                GameManager.SetHappiness(GameManager.GetHappiness() - 15);
+                Debug.Log("Did not buy 2x food");
+            }
+
+            GameManager.SetFoodBought(0);
+
             GameObject[] floatingIcon = GameObject.FindGameObjectsWithTag("FloatingIcon");
 
             for (int i = 0; i < floatingIcon.Length; i++)
@@ -120,7 +128,7 @@ public class DayTimeManager : MonoBehaviour
 
         if (minutes >= 60f)
         {
-            SetMinute(0);
+            SetMinute(minutes - 60);
             SetHour(GetHour() + 1);
         }
 
