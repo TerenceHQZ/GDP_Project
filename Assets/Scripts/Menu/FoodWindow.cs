@@ -53,7 +53,11 @@ public class FoodWindow : MonoBehaviour
         if (GameManager.GetMoney() >= RestaurantCost)
         {
             GameManager.SetMoney(GameManager.GetMoney() - RestaurantCost);
+<<<<<<< Updated upstream
             GameManager.SetHappiness(GameManager.GetHappiness() + 12);
+=======
+            GameManager.SetHappiness(GameManager.GetHappiness() + 15);
+>>>>>>> Stashed changes
             Tasks.dailyMoneySpent += RestaurantCost;
 
             UIPrompt.text = "John bought fast food for $100. (Happiness +12)";
